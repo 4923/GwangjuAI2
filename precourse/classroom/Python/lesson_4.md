@@ -105,6 +105,6 @@ dictionary
     data = pd.DataFrame(movie)  # list를 pd의 DataFrame 형식으로 변환        
     ```
 ### 실습 : 공공데이터 / 동네예보 조회서비스
-Open API : https://data.go.kr/data/15057682/openapi.do
-서비스URL http://apis.data.go.kr/1360000/VilageFcstInfoService
-실습파일 : open_API/weather_api_2018.py
+Open API : https://data.go.kr/data/15057682/openapi.do  
+서비스URL http://apis.data.go.kr/1360000/VilageFcstInfoService  
+실습파일 : open_API/weather_api_2018.py  
