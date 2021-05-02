@@ -14,6 +14,6 @@
     * [Chapter 3 : Python으로 만드는 익명 질문 게시판](https://github.com/4923/AI_school_2/blob/master/precourse/codelion/3_QNA_board.ipynb)
 
 2. Google Classroom
-    * Python Course
+    * [Python Course](https://github.com/4923/AI_school_2/tree/master/precourse/classroom/Python)
     * AI Course
     * Assignments
