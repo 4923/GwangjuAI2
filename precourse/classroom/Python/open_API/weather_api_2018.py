@@ -12,10 +12,14 @@ http://apis.data.go.kr/1360000/VilageFcstInfoService/getUltraSrtFcst
 &base_date=20151201&base_time=0630&nx=55&ny=127
 
 '''
-URL = 'http://apis.data.go.kr/1360000/VilageFcstInfoService/getUltraSrtFcst?serviceKey=e2Z9t4eATx2wlQuWKatDsSLF%2FpWhq%2FlDiDhgE3CfTeWDIQK26jm0jA3UvNy%2FdHCi2QOKFHd1rASdJmTnB%2BbA4w%3D%3D&numOfRows=10&pageNo=1&base_date=20151201&base_time=0630&nx=55&ny=127'
+URL = 'http://apis.data.go.kr/1360000/VilageFcstInfoService/getUltraSrtFcst?serviceKey=e2Z9t4eATx2wlQuWKatDsSLF%2FpWhq%2FlDiDhgE3CfTeWDIQK26jm0jA3UvNy%2FdHCi2QOKFHd1rASdJmTnB%2BbA4w%3D%3D&numOfRows=10&pageNo=1&base_date=20210503&base_time=0630&nx=55&ny=127'
+# 최근 1일 간의 자료만 제공
 
 request = requests.get(URL)  # json
 text = request.text
-
+# print(text)
+# print('--------------------------')
 weather = json.dumps(text, indent = 4, sort_keys=True)
 print(weather)
+
+# 뭐가 나오긴 하는데 분류가 안됨
