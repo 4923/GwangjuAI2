@@ -15,5 +15,18 @@
 
 2. Google Classroom
     * [Python Course](https://github.com/4923/AI_school_2/tree/master/precourse/classroom/Python)
-    * AI Course
-    * Assignments
+        - [lesson 2 : Basic Python / basic functions and syntax](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Python/lesson_2.md)
+        - [lesson 3 : Advanced Python / Functions, Class](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Python/lesson_3.md)
+        - [lesson 4 : Open API, JSON](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Python/lesson_4.md)
+    * [AI Course](https://github.com/4923/AI_school_2/tree/master/precourse/classroom/Artificial-Intelligence)
+        - [lesson 1 : A history of AI](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_1.md)
+        - [lesson 2 : Cognitive Computing](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_2.md)
+        - [lesson 3 : Several theorical basis of AI](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_3.md)
+        - [lesson 4 : Deep learning](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_4.md)
+        - [lesson 5 : ML overview](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_5.md)
+        - [lesson 6 : ML and Statistics](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_6.ipynb)
+        - [lesson 7 : Math / Gradient descent](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_7.ipynb)
+        - [lesson 8 : Math / Partial derivative and Optimization](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_8.ipynb)
+        - [lesson 9 : ML Algorithm / Logistic classification, Support Vector Machine](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_9.ipynb)
+        - [lesson 10 : ML Algorithm / Decision tree, K-Nearest Neighbor](https://github.com/4923/AI_school_2/blob/master/precourse/classroom/Artificial-Intelligence/lesson_10.ipynb)
+    * [Assignments](https://github.com/4923/AI_school_2/tree/master/precourse/classroom/Assignments)
