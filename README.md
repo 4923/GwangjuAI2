@@ -10,4 +10,4 @@
 
 
 ## ETC
-- [collect logs](https://github.com/4923/AI_school_2/tree/master/log)
+- [collect logs](https://github.com/4923/AI_school_2/tree/master/logs)
