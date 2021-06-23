@@ -1,0 +1,123 @@
+평점높은순(1) / 리뷰많은순(2) / 낮은가격순(3) / 높은가격순(4) / 최신출시순(5): 3
+-------------------------------
+-1 번째 서적번호------------------
+-------------------------------
+Name : 10-Day Green Smoothie Cleanse
+Author : JJ Smith
+User Rating : 4.7
+Reviews : 17350
+Price : 8,000 원
+Year : 2016
+Genre : Non Fiction
+-------------------------------
+-------------------------------
+-2 번째 서적번호------------------
+-------------------------------
+Name : 11/22/63: A Novel
+Author : Stephen King
+User Rating : 4.6
+Reviews : 2052
+Price : 22,000 원
+Year : 2011
+Genre : Fiction
+-------------------------------
+-------------------------------
+-3 번째 서적번호------------------
+-------------------------------
+Name : 12 Rules for Life: An Antidote to Chaos
+Author : Jordan B. Peterson
+User Rating : 4.7
+Reviews : 18979
+Price : 15,000 원
+Year : 2018
+Genre : Non Fiction
+-------------------------------
+-------------------------------
+-4 번째 서적번호------------------
+-------------------------------
+Name : 1984 (Signet Classics)
+Author : George Orwell
+User Rating : 4.7
+Reviews : 21424
+Price : 6,000 원
+Year : 2017
+Genre : Fiction
+-------------------------------
+-------------------------------
+-5 번째 서적번호------------------
+-------------------------------
+Name : 5,000 Awesome Facts (About Everything!) (National Geographic Kids)
+Author : National Geographic Kids
+User Rating : 4.8
+Reviews : 7665
+Price : 12,000 원
+Year : 2019
+Genre : Non Fiction
+-------------------------------
+구매하실 서적 번호를 입력 : 4
+여름바다 님, 구매 신청하신 서적은 1984 (Signet Classics) 입니다.
+가격은 12000 원입니다.
+구매(1) / 비구매(2) : 2
+다른 서적을 확인 중
+평점높은순(1) / 리뷰많은순(2) / 낮은가격순(3) / 높은가격순(4) / 최신출시순(5): 2
+-------------------------------
+-1 번째 서적번호------------------
+-------------------------------
+Name : 10-Day Green Smoothie Cleanse
+Author : JJ Smith
+User Rating : 4.7
+Reviews : 17350
+Price : 8,000 원
+Year : 2016
+Genre : Non Fiction
+-------------------------------
+-------------------------------
+-2 번째 서적번호------------------
+-------------------------------
+Name : 11/22/63: A Novel
+Author : Stephen King
+User Rating : 4.6
+Reviews : 2052
+Price : 22,000 원
+Year : 2011
+Genre : Fiction
+-------------------------------
+-------------------------------
+-3 번째 서적번호------------------
+-------------------------------
+Name : 12 Rules for Life: An Antidote to Chaos
+Author : Jordan B. Peterson
+User Rating : 4.7
+Reviews : 18979
+Price : 15,000 원
+Year : 2018
+Genre : Non Fiction
+-------------------------------
+-------------------------------
+-4 번째 서적번호------------------
+-------------------------------
+Name : 1984 (Signet Classics)
+Author : George Orwell
+User Rating : 4.7
+Reviews : 21424
+Price : 6,000 원
+Year : 2017
+Genre : Fiction
+-------------------------------
+-------------------------------
+-5 번째 서적번호------------------
+-------------------------------
+Name : 5,000 Awesome Facts (About Everything!) (National Geographic Kids)
+Author : National Geographic Kids
+User Rating : 4.8
+Reviews : 7665
+Price : 12,000 원
+Year : 2019
+Genre : Non Fiction
+-------------------------------
+구매하실 서적 번호를 입력 : 2
+여름바다 님, 구매 신청하신 서적은 11/22/63: A Novel 입니다.
+가격은 15000 원입니다.
+구매(1) / 비구매(2) : 1
+결제처리 진행 중
+product_choose_success
