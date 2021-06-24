@@ -1,0 +1,46 @@
+OS 볼륨에 대한 폴더 경로의 목록입니다.
+볼륨 일련 번호는 945A-C2BF입니다.
+C:.
+|   blank.py
+|   Commerce6_login.ipynb
+|   Commerce6_login_print.ipynb
+|   Commerce6_login_refactor.ipynb
+|   Commerce6_origin.ipynb
+|   Commerce6_total.ipynb
+|   flow-chart.drawio
+|   my_cart.csv
+|   output_example.txt
+|   README.md
+|   tree.txt
+|   
++---login
+|       Commerce6_login.csv
+|       Commerce6_login.xlsx
+|       Commerce6_login_origin.csv
+|       
++---product
+|       bestsellers with categories.csv
+|       
++---purchase
++---share
++---source
+|   \---login
+|       |   account.py
+|       |   AccountCheck.py
+|       |   login_df.py
+|       |   main.py
+|       |   Welcome.py
+|       |   
+|       +---Idea_InNam
+|       |       f_join.py
+|       |       f_login.py
+|       |       
+|       \---__pycache__
+|               account.cpython-38.pyc
+|               AccountCheck.cpython-38.pyc
+|               login_df.cpython-38.pyc
+|               Welcome.cpython-38.pyc
+|               
+\---__pycache__
+        blank.cpython-38.pyc
+        
