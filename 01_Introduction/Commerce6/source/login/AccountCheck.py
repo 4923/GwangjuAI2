@@ -4,20 +4,28 @@ import numpy as np
 import string   # for create randomKey
 
 # import customed modules
-import Welcome, login_df 
+# import login_df 
+import Welcome
 
 # 계정 확인 : 로그인
 # 로그인 실패시 : 비밀번호 찾기, 회원가입, 보안문자 출력
-class AccountCheck(Welcome):
+class AccountCheck():
+    def __init__(self):
+        # login_df = login_df
+        self.welcome = Welcome()
+        pass
+
     def signin(self):
+        login_df = pd.read_csv("../../login/Commerce6_login.csv", encoding="UTF-8")
+        print(login_df, type(login_df))
         print("ID와 비밀번호를 입력하세요.")
         id = input("ID : ")
         pw = input("PW : ")
-        
+
         # 정상 로그인
-        if login_df.loc[login_df['id'] == id and login_df['pw'] == pw]: 
-            Welcome.authority(True)
-            print(f"환영합니다. {Welcome.accountInfo(id).loc['nickname']}님")
+        if login_df.loc[login_df['id'] == self.id]['pw'].values[0] == self.pw:
+            # self.welcome.authority(True)    # 이후에도 login 여부 확인하기 위해 변경
+            print(f"환영합니다. {self.welcome.accountInfo(id)['nickname']}님")
         else:
             # 재로그인
             for remainCount in range(3, 0, -1):
@@ -39,13 +47,36 @@ class AccountCheck(Welcome):
                         print("올바른 입력입니다. 다시 로그인하세요.")
                         self.signin()                   # 처음부터 다시 로그인
                 else: print("잘못된 입력입니다. 올바른 명령어를 입력해주세요")
+
     def findID(self):
-        pass 
+        login_df = pd.read_csv("../../login/Commerce6_login.csv", encoding="UTF-8")
+        print("닉네임과 주소를 입력하세요.")
+        # 입력
+        while True:
+            nickname = input("닉네임 : ")
+            if not login_df.loc[login_df['nickname'] == nickname]:
+                print("잘못된 닉네임입니다. 다시 입력하세요.")
+                print("과정을 중단하려면 0을 입력하세요")
+            elif nickname == '0': return self.welcome
+            else: break
+        while True:
+            location = input("주소 : ")
+            if not login_df.loc[login_df['nickname'] == nickname and login_df['location'] == location]:
+                print("잘못된 주소입니다. 다시 입력하세요.")
+                print("과정을 중단하려면 0을 입력하세요")
+            elif nickname == '0': return self.welcome
+            else: break
+        # 찾기
+        your_ID = login_df.loc[login_df['nickname'] == nickname]
+        print(your_ID)
+            
     
     def findPW(self, id):
+        login_df = pd.read_csv("../../login/Commerce6_login.csv", encoding="UTF-8")
         pass
 
     def signup(self):
+        login_df = pd.read_csv("../../login/Commerce6_login.csv", encoding="UTF-8")
         pass 
 
     def security(self, length):   # type(length) : int
@@ -60,3 +91,5 @@ class AccountCheck(Welcome):
         if answer == randomKey: return True 
         else: return False
 
+A = AccountCheck()
+A.signin()
