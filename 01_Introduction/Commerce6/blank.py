@@ -26,7 +26,7 @@ class Commerece6_purchase :
     def cart_look(self):
         
         # pd.set_option('display.max.colwidth', 30 )  # 터미널 다음줄로 넘어가면 넓이 줄이기
-        cart_df = pd.read_csv("C:/Users/wjsdn/Desktop/woong/my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
+        cart_df = pd.read_csv("./my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
         total_price = 0
         for i in range(len(cart_df)):
             total_price += cart_df['Price'][i]
@@ -43,14 +43,14 @@ class Commerece6_purchase :
             elif number == 2:
                 self.choice_purchase()    
     def all_purchase(self):
-        product_df = pd.read_csv("C:/Users/wjsdn/Desktop/woong/bestsellers with categories.csv")
-        cart_df = pd.read_csv("C:/Users/wjsdn/Desktop/woong/my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
+        product_df = pd.read_csv("./product/bestsellers with categories.csv")
+        cart_df = pd.read_csv("./my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
         total_price = 0
         for i in range(len(cart_df)):
             total_price += cart_df['Price'][i]
         print('{}님, 총 {}원이 구매가 완료되었습니다.'.format(self.id, total_price))
     def choice_purchase(self):
-        cart_df = pd.read_csv("C:/Users/wjsdn/Desktop/woong/my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
+        cart_df = pd.read_csv("./my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
         total_price = 0
         #cart_choice = [int(x) for x in input().split()] #사용자 선택 번호 list화
         print("구매를 원하시는 책 번호를 입력해주세요.(형식 : 0 1 4 5)")
@@ -65,7 +65,7 @@ class Commerce6_product :
   def __init__(self, id, pw) :
     self.id = id
     self.pw = pw
-    with open("C:/Users/wjsdn/Desktop/woong/my_cart.csv", "r+") as file:
+    with open("./my_cart.csv", "r+") as file:
       file.truncate(0)
 
   def secure():
@@ -98,7 +98,7 @@ class Commerce6_product :
     msg = MIMEBase('multipart', 'mixed') #객체 생성 / maintype(내용 포맷)과 subtype(내용 형식)
 
     # MIME은 메시지 말고 다른 이진 파일들을 보내려면 인코딩 하여 텍스트로 바꾸어 전달하고 다시 이진 파일로 디코딩
-    path = 'C:/Users/wjsdn/Desktop/woong/reciept.png' #보낼 이미지의 경로
+    path = './reciept.png' #보낼 이미지의 경로
     part = MIMEBase("application", "octet-stream")
     part.set_payload(open(path, 'rb').read())  # 'rb' : byte 타입으로 변환
     encoders.encode_base64(part)
@@ -117,11 +117,11 @@ class Commerce6_product :
     global login_df
     global choice_product_booknumber
 
-    login_df = pd.read_csv("C:/Users/wjsdn/Desktop/woong/Commerce6_login.csv")
-    product_df = pd.read_csv("C:/Users/wjsdn/Desktop/woong/bestsellers with categories.csv")
+    login_df = pd.read_csv("./login/Commerce6_login.csv")
+    product_df = pd.read_csv("./product/bestsellers with categories.csv")
     
     while True :
-      product_df = pd.read_csv("C:/Users/wjsdn/Desktop/woong/bestsellers with categories.csv")
+      product_df = pd.read_csv("./product/bestsellers with categories.csv")
       product_choice_options = int(input("평점높은순(1) / 리뷰많은순(2) / 낮은가격순(3) / 높은가격순(4) / 최신출시순(5) / 장르별(6) / 장바구니 확인(7): "))
       
       if product_choice_options == 1 :
@@ -202,7 +202,7 @@ class Commerce6_product :
 
       elif choice_product_bookorder == 3:
         data_list = (self.id, product_df.loc[choice_product_booknumber-1][0], (product_df.loc[choice_product_booknumber-1][4])*1000) #제목, 가격 data
-        with open("C:/Users/wjsdn/Desktop/woong/my_cart.csv", "a") as file:
+        with open("./my_cart.csv", "a") as file:
           writer = csv.writer(file)
           writer.writerow(data_list)
         print("{}님이 선택하신 책 {}({})가 장바구니에 담겼습니다.\n".format(self.id, product_df.loc[choice_product_booknumber-1][0], product_df.loc[choice_product_booknumber-1][1]))
@@ -213,7 +213,7 @@ class Commerce6_product :
 
   def product_receipt(self):
 
-    cart_df = pd.read_csv("C:/Users/wjsdn/Desktop/woong/my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
+    cart_df = pd.read_csv("./my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
     now = dt.datetime.now()
     
     if input("영수증을 발급하시겠습니다? Y / N : ") == 'Y' :
@@ -229,12 +229,12 @@ class Commerce6_product :
       print("성명 : {}".format(login_df.loc[(login_df['id'] == self.id) & (login_df['pw'] == self.pw)]['id'].values[0]))
       print("-------------------------------")
       time.sleep(0.1)
-      pyautogui.screenshot('C:/Users/wjsdn/Desktop/woong/reciept.png', region=(83, 833, 780, 135) )
+      pyautogui.screenshot('./reciept.png', region=(83, 833, 780, 135) )
       # Commerce6_product.send_mail("전웅", "wjsdnd03@gmail.com")
     else:
       pass
     
-    cart_df = pd.read_csv("C:/Users/wjsdn/Desktop/woong/my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
+    cart_df = pd.read_csv("./my_cart.csv", header=None, names=['Title', 'Price'], usecols=[1,2])
 
     request = input("배송 시 요청사항이 있으신가요? ")
     print("배송을 시작합니다. \n\n 배송정보\n")
@@ -245,12 +245,12 @@ class Commerce6_product :
     print("-------------------------------")
   
         
-# from purchase import Commerce6_purchase
-a = Commerce6_product("나호용", 3456)
-s = Commerece6_purchase("나호용", 3456)
-a.product_infomation_resule()
+# # from purchase import Commerce6_purchase
+# a = Commerce6_product("나호용", 3456)
+# s = Commerece6_purchase("나호용", 3456)
+# a.product_infomation_resule()
 
-a.product_receipt()
+# a.product_receipt()
 
-# def product_basket(product):
+# # def product_basket(product):
 
