@@ -1,4 +1,5 @@
-id,pw,nickname,location
-문재인,1100,moon_justice,서울특별시 종로구
-이준석,1234,bicycle_guy,서울특별시 영등포구
-이명박,3243,liar_lee,서울특별시 서초구
+,id,pw,nickname,location
+0,문재인,1100,moon_justice,서울특별시 종로구
+1,이준석,1234,bicycle_guy,서울특별시 영등포구
+2,이명박,3243,liar_lee,서울특별시 서초구
+3,아이디,aaaAAA!!!111,닉네임,주소
