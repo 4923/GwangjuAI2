@@ -20,9 +20,9 @@ from email import encoders
 # User information
 
 class Commerece6_purchase :
-    def __init__(self, id, pw) :
-        self.id = id
-        self.pw = pw
+    def __init__(self, ACCOUNT_INFO) :
+        self.id = ACCOUNT_INFO['id'].to_list()[0]
+        self.pw = ACCOUNT_INFO['pw'].to_list()[0]
     def cart_look(self):
         
         # pd.set_option('display.max.colwidth', 30 )  # 터미널 다음줄로 넘어가면 넓이 줄이기
@@ -62,11 +62,11 @@ class Commerece6_purchase :
 
 
 class Commerce6_product :
-  def __init__(self, id, pw) :
-    self.id = id
-    self.pw = pw
-    with open("./my_cart.csv", "r+") as file:
-      file.truncate(0)
+  def __init__(self, ACCOUNT_INFO) :
+      self.id = ACCOUNT_INFO['id'].to_list()[0]
+      self.pw = ACCOUNT_INFO['pw'].to_list()[0]
+  with open("./my_cart.csv", "r+") as file:
+    file.truncate(0)
 
   def secure():
     code =  string.ascii_letters  # string.ascii_lowercase, string.ascii_uppercase
@@ -123,7 +123,8 @@ class Commerce6_product :
     while True :
       product_df = pd.read_csv("./product/bestsellers with categories.csv")
       product_choice_options = int(input("평점높은순(1) / 리뷰많은순(2) / 낮은가격순(3) / 높은가격순(4) / 최신출시순(5) / 장르별(6) / 장바구니 확인(7): "))
-      
+      s = Commerece6_purchase # modified
+
       if product_choice_options == 1 :
         product_df = product_df.sort_values(by=['User Rating'], axis=0, ascending=False)
       elif product_choice_options == 2 :
@@ -245,7 +246,7 @@ class Commerce6_product :
     print("-------------------------------")
   
         
-# # from purchase import Commerce6_purchase
+# from purchase import Commerce6_purchase
 # a = Commerce6_product("나호용", 3456)
 # s = Commerece6_purchase("나호용", 3456)
 # a.product_infomation_resule()
