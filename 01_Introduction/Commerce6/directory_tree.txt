@@ -1,0 +1,16 @@
+C:.
+|   blank.py			# 상품
+|   Commerce6_total.ipynb		# 로그인
+|   my_cart.csv
+|   directory_tree.txt		# 파일관리
+|   
++---login
+|       Commerce6_login.csv		# 회원 정보를 저장하는 csv
+|       Commerce6_login.xlsx
+|       Commerce6_login_origin.csv	# 교안으로 받은 csv
+|       
++---product
+|       bestsellers with categories.csv	# 무슨 csv?
+|       
++---purchase
++---share
