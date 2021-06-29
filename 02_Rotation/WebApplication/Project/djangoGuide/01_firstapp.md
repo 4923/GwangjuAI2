@@ -1,5 +1,5 @@
 ## Guide
-2021.06.29
+2021.06.29 | 간단한 view 실습
 
 1. `startapp` 으로 앱 생성
 python manage.py startapp accountapp
