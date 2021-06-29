@@ -10,18 +10,17 @@
 - Introduction of AI, Python (contents are listed on README.md)
 
 ### Main Course
-1. [Introduction](https://github.com/4923/GwangjuAI2/tree/master/01_Introduction)
-    - Basic method of [numpy](https://github.com/4923/GwangjuAI2/tree/master/01_Introduction/Numpy) / [pandas](https://github.com/4923/GwangjuAI2/tree/master/01_Introduction/Pandas) / [matplotlib, seaborn](https://github.com/4923/GwangjuAI2/tree/master/01_Introduction/Visualization)
-    - Simple project
-        + [Starter Project](https://github.com/4923/GwangjuAI2/tree/master/01_Introduction/Starter-Project)
-            - practice basic syntax of python
-            - program creates electricity bill
-        + [Super Project](https://github.com/4923/GwangjuAI2/tree/master/01_Introduction/Super-Project)
-            - lotto : predict lottery number
-            - GwangJu : sort tour spot of GwangJu
-        + [Commerce6](https://github.com/4923/GwangjuAI2/tree/master/01_Introduction/Commerce6)
-2. Rotation
-
+1. [Python101](https://github.com/4923/GwangjuAI2/tree/master/01_Python101/README.md)
+    - Pandas
+    - Numpy
+    - Visualization (matplotlib, seaborn)
+2. [Rotation]((https://github.com/4923/GwangjuAI2/tree/master/01_Python101/README.md))
+    - Web Application
+    - Algorithmn
+    - DeepLearning & Reinforcement Learning
+    - MachineLearning
+    - BigData Analysis
+    - Mentoring/Seminar
 
 ## ETC
 - [collect logs](https://github.com/4923/GwangjuAI2/tree/master/_logs)
