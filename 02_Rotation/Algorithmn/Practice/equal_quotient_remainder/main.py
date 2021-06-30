@@ -33,3 +33,12 @@ def solve2(N=int(input())):
 
 
 print(solve2())
+
+# solution 3 : 등비수열 합 공식
+
+
+def solve3(N=int(input())):
+    return (N+1)*((N+1)**(N-1)-1)/N
+
+
+print(solve3())
