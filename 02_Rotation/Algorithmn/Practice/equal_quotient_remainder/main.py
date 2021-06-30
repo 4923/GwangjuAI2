@@ -15,37 +15,21 @@ def solution1(N=int(input())):
     answer = 0
     for X in range(N - 1, 0, -1):  # 자기자신으로 나누면 나머지가 0이므로 범위에서 제외
         answer += (N + 1) * X  # 공식에 따라 N+1에 변화하는 값 X를 곱하여 총계에 합산
-        print("\t", answer, (N + 1) * X, X)
     return answer
 
 
 print(solution1())
 
 # # solution 2 : if condition
-# def solution2(N=int(input())):
-#     answer, div = 0, 1
-#     for num in range(N * (N - 1)):
-#         print(num)
-#         if div == N:
-#             return answer
-#         if num // div == num - (div * N):
-#             answer += num
-#         div += 1
-#     return "Fail"
+# 최대값인 N * N -1 까지 돌면서 N - 1 까지의 수로 나눈 후 나머지와 몫 비교
 
 
-# # print(solution2())
+def solution2(N=int(input())):
+    answer = 0
+    for num in range(1, N * N):
+        if num // N == num % N:
+            answer += num
+    return answer
 
-# N = int(input())
-# print(N)
-# answer, div = 0, 1
-# for num in range(N * (N - 1)):
-#     print(num)
-#     if div == N:
-#         break
-#     if num // div == num - (div * N):
-#         answer += num
-#     div += 1
 
-# print()
-# print(answer)
+print(solution2())
