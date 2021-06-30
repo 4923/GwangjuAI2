@@ -5,9 +5,10 @@
 -- "scratch.db"에 접속하여 다음을 실행해 본다.
 
 -- CREATE TABLE로 데이터 베이스에 테이블을 추가할 수 있다 . 
-CREATE TABLE test ( a INT, b TEXT, c TEXT );        		-- "a", "b", "c" 컬럼의 테이블 생성.
+CREATE TABLE test ( a INT, b TEXT, c TEXT );        		              -- "a", "b", "c" 컬럼의 테이블 생성.
 CREATE TABLE IF NOT EXISTS test ( a INT, b TEXT, c TEXT );        	-- "a", "b", "c" 컬럼의 테이블 중복 체크 후 생성.
-SELECT * FROM sqlite_master WHERE TYPE = "table"         		-- 테이블 목록 (SQLite).
+SELECT name FROM sqlite_master WHERE TYPE = "table"         	-- 테이블 목록 (SQLite).
+PRAGMA table_info(test)                                                                 -- 특정 테이블에 대한 정보.
 
 -- INSERT INTO ~ VALUES로 행을 추가할 수 있다.
 INSERT INTO test VALUES ( 1, 'This', 'Right here!' );            -- 1행 추가.
@@ -34,6 +35,7 @@ SELECT * FROM test;	                   -- 내용 확인.
 
 -- DROP TABLE로 특정 테이블을 삭제할 수 있다. 
 DROP TABLE test;                                    -- 데이터 베이스에서 "test" 테이블 삭제!
+DROP TABLE IF EXISTS test;                       -- 존재여부 확인하고 데이터 베이스에서 "test" 테이블 삭제!
 
 -- NULL은 값이 아니라 결측치를 의미하며 0 또는 ' ' (공백)과는 다르다. 
 CREATE TABLE test ( a INT, b TEXT, c TEXT );       
@@ -43,6 +45,7 @@ SELECT * FROM test;                                                -- NULL 포함 
 SELECT * FROM test WHERE a = NULL;                        -- 작동 안함. 
 SELECT * FROM test WHERE a IS NULL;                        -- 작동 함.
 SELECT * FROM test WHERE a IS NOT NULL;                  -- 작동 함.
-SELECT count(*) FROM test WHERE a IS NULL;                -- "a" 컬럼의 NULL 수 세어 줌.
-
-
+SELECT COUNT(*) FROM test WHERE a IS NULL;                -- "a" 컬럼의 NULL 수 세어 줌.
+SELECT COUNT(*)-COUNT(a) FROM test;                          -- "a" 컬럼의 NULL 수 세어 줌.
+DELETE FROM test WHERE a IS NULL;                              -- "a" 컬럼에 NULL이 있는 행 삭제.
+UPDATE test SET a = 0 WHERE a IS NULL;                        -- "a" 컬럼의 NULL을 0 값으로 채워 넣음.
