@@ -20,7 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 env_list = dict()   # create empty dictionary
 
 local_env = open(os.path.join(BASE_DIR, '.env'))    # load contents of .env file
@@ -33,6 +32,9 @@ while True:
     key = line[:start] 
     value = line[start+1:]
     env_list[key] = value           # env_list는 dictionary type이므로 key, value를 할당
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env_list['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
