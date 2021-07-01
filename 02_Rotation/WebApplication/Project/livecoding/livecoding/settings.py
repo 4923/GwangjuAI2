@@ -11,16 +11,33 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os   # SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# Path(__file__) : settings.py가 있는 경로
+# parent.parent : 해당 경로의 부모 경로를 두개 찾겠다.
+# settings.py의 parent : 앱폴더
+# 앱폴더의 parent : project 폴더
 
+# 불러오기
+env_list = {}
+local_env = open(os.path.join(BASE_DIR, '.env'))    # import os
+
+# 읽기
+while True:
+    line = local_env.readline()
+    if not line: break
+    line = line.replace('\n' , '')
+    start = line.find("=")
+    key = line[:start]
+    value = line[start+1:]
+    env_list[key] = value
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-s_!h*kioku1)hmc_0n+dmewx(ls&e**z-ebz%5hfssirm7@c@v"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
