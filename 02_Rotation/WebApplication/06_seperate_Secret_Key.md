@@ -2,7 +2,8 @@
 
 1. 최상위 폴더에 `.env` 파일 생성
 2. settings.py 에서 SECRET_KEY = "~~" 생성
-3. 원본 settings.py에서 .env의 SECRET_KEY를 읽어오는 작업
+    - 이 때 **띄어쓰기나 따옴표는 삭제**한다.
+3. 원본 settings.py에서 `.env`의 `SECRET_KEY`를 읽어오는 작업
     ```python
     import os       # for local_env
 
@@ -14,17 +15,17 @@
 
     # BASE_DIR 하단에 작성 : 불러오기
     env_list = {}
-    local_env = open(os.path.join(BASE_DIR, '.env'))    # import os
+    local_env = open(os.path.join(BASE_DIR, '.env'))    # load contents of .env file
 
     # 읽기
     while True:
-        line = local_env.readline()
-        if not line: break
-        line = line.replace('\n' , '')
-        start = line.find("=")  # "=" 이라는 대입 연산자를 기준으로 왼쪽을 key, 오른쪽을 value로 지정
-        key = line[:start]
+        line = local_env.readline()     # read contents of .env file by line
+        if not line: break              # break condition
+        line = line.replace('\n', '')   # 보이지 않는 줄개행 문자를 지우는 작업 (readline()을 사용하게 되면 줄개행 문자도 함께 읽어들이게 됨)
+        start = line.find('=')          # key, value는 '='을 기준으로 나눈다.
+        key = line[:start] 
         value = line[start+1:]
-        env_list[key] = value
+        env_list[key] = value           # env_list는 dictionary type이므로 key, value를 할당
     ```
 
     - overflow에서는 environ을 사용했는데, 해당 모듈에서는 `.read_env` 를 사용할 수 있는 것 같다.
