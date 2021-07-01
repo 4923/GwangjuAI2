@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os   # seperate .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bl(az$wd^2p7k#^sa6ru&lq+5jmiuf15uk+%9e2jckisrwizzw'
+env_list = dict()   # create empty dictionary
+
+local_env = open(os.path.join(BASE_DIR, '.env'))    # load contents of .env file
+
+while True:
+    line = local_env.readline()     # read contents of .env file by line
+    if not line: break              # break condition
+    line = line.replace('\n', '')   # 보이지 않는 줄개행 문자를 지우는 작업 (readline()을 사용하게 되면 줄개행 문자도 함께 읽어들이게 됨)
+    start = line.find('=')          # key, value는 '='을 기준으로 나눈다.
+    key = line[:start] 
+    value = line[start+1:]
+    env_list[key] = value           # env_list는 dictionary type이므로 key, value를 할당
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
