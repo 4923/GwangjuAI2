@@ -14,7 +14,7 @@
     - Pandas
     - Numpy
     - Visualization (matplotlib, seaborn)
-2. [Rotation]((https://github.com/4923/GwangjuAI2/tree/master/01_Python101/README.md))
+2. [Rotation](https://github.com/4923/GwangjuAI2/tree/master/02_Rotation/README.md)
     - Web Application
     - Algorithmn
     - DeepLearning & Reinforcement Learning
