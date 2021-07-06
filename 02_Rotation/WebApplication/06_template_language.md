@@ -1,10 +1,17 @@
-구역을
+# Django Template Language
 
-header
-contents
-footer
+웹 페이지의 구역을
 
-나눈다
+1. header
+2. contents
+3. footer
+
+세개로 나눈다고 할 때
+
+header와 footer는 대부분의 페이지가 공유하는 부분이고, (include)  
+contents는 실질적으로 변경되는 부분이다. (extends)
+
+따라서, 재사용 할 수 있는 부분은 재사용 하는 것이 경제적이며 이를 위해 django는 template language를 제공한다.
 
 ## `extends`
 재활용 되는 부분은 재사용하자. (header, footer)
