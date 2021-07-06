@@ -19,8 +19,16 @@ from ./Project/01_SQL_and_DataBase/scripts/script_03.txt
 - DROP TABLE customer2;                                             		### 테이블 삭제.
 
 ### 테이블 생성시 컬럼의 자료형을 명시할 수 있다. CHAR, VARCHAR = TEXT형.
-### CHAR(n) = 길이 고정적.
-### VARCHAR(n) = 최대 길이가 n까지.
+-  CHAR(n) = 길이 고정적.
+-  VARCHAR(n) = 최대 길이가 n까지.
+- 차이?
+	- 호환성 유지를 위해 다양한 '자료형'을 지원하나 실제 처리되는 자료형은 다섯개다.
+		1. NULL: 결측치.
+		2. INTEGER: 8바이트까지로표현할수있는정수.
+		3. REAL:8바이트로표현할수있는실수.
+		4. TEXT:길이에제약이없는문자열.
+		5. BLOB:입력된자료를원형그대로저장.
+	- 내부적으로는 char와 varchar의 차이가 없다.
 - DROP TABLE test;                                                  ### "test" 테이블이 이미 있다면 삭제.
 - CREATE TABLE test (                         		        
      		id INTEGER,
