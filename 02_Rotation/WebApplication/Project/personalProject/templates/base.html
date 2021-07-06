@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +13,9 @@
     {% endblock %}
 
     {% include 'footer.html' %}
+
+    {% comment %} STATIC FILES LINK {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
 </body>
 
 
