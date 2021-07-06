@@ -76,3 +76,6 @@
     - ```html
         font-family: 'Merienda', cursive;
         ```
+
+4. 완성  
+    <img alt="apply font" src=img/apply_font.png>
