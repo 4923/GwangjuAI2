@@ -1,6 +1,8 @@
-
+# Manage Statics
 
 > 일반적으로 html에는 구조만 담고 디자인적 요소는 css에 담는다. css으로 디자인 요소를 옮겨보자.
+
+> 이 단계는 style을 css로 분리하는 단계이므로 디자인이 변경되면 안된다.
 
 1. 최상위 폴더에 `static` 폴더를 생성
 2. `static/`에 `base.css`를 생성한다.
