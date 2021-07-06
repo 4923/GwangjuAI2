@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
 
 {% block contents %}
+
+<style>
+    .testing { 
+        background-color: yellow;
+        margin: 1rem;
+        /* 48px : 원래 기본 브라우저 폰트 사이즈 : 16px 이므로 3rem과 같은 의미가 된다. */
+        height: 48px;   
+        width: 48px;
+        border-radius: .5rem;
+    }
+
+</style>
+
 <div style="height: 20rem; background-color: lightslategray; margin: 2rem; border-radius: 1rem;">
     <h1>TEST</h1>
+    
+    <div class="testing" style="display: block">block</div>
+    <div class="testing" style="display: inline">block</div>
+    <div class="testing" style="display: inline-block">block</div>
+    <div class="testing" style="display: none">block</div>
+    <div class="testing">block</div>
 </div>
+
+
 {% endblock %}
