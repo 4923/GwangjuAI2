@@ -8,3 +8,7 @@
     - *base.html을 불러오는 단계* (수정 필요)
 
 4. [템플릿 언어로 head, header, footer, contents를 분리하기 : extends, include 실습](https://github.com/4923/GwangjuAI2/blob/master/02_Rotation/WebApplication/Project/djangoGuide/04_seperate_structures.md)
+
+5. [bootstrap, google font를 적용하기](https://github.com/4923/GwangjuAI2/blob/master/02_Rotation/WebApplication/Project/djangoGuide/05_design.md)
+
+6. [static 파일들을 관리하기 : html div tag에 담았던 style="" 내용을 css로 옮기기](https://github.com/4923/GwangjuAI2/blob/master/02_Rotation/WebApplication/Project/djangoGuide/06_seperate_statics.md)
