@@ -3,7 +3,15 @@
 {% extends 'base.html' %}
 
 {% block contents %}
-<div style="height:20rem; background-color:lightslategray; margin:2rem; border-radius:1rem;">
-    <h1>TEST</h1>
+<div style="margin: 2rem; text-align: center">
+    <h1>METHOD</h1>
+
+    <form action="/accounts/hello_world/" method="post">    <!-- action : url주소 -->
+        {% csrf_token %}
+        <input type="submit" class="btn btn-dark rounded-pill px-4">
+    </form>
+
+    <h3>{{ text }}</h3>
+
 </div>
 {% endblock %}
