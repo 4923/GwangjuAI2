@@ -11,8 +11,6 @@ CSS의 스타일 태그는 다음 세 종류로 나뉜다.
 
 우선순위는 inline > internal > external 순서다.
 
-
-
 <details>
 <summary>순서가 달라지는 이유</summary>
 렌더링엔진이 가장 먼저 읽어들이는 문서는 HTML문서로 CSS파일의 우선순위는 그 다음이다.
@@ -21,12 +19,13 @@ CSS의 스타일 태그는 다음 세 종류로 나뉜다.
 
 <li><a href="https://d2.naver.com/helloworld/59361">Naver D2 : "브라우저는 어떻게 동작하는가?"</a></li>
 </details>
+<br>
 
 
-display attribute
+### 보충 : display attribute
 
-block : 부모 크기를 전부 가져간다.
+- block : 부모 크기를 전부 가져간다.
 
-inline : 글자크기
+- inline : 글자크기
 
-inline : 원하는대로 높이 넓이 나눌 수 있다.
+- inline : 원하는대로 높이 넓이 나눌 수 있다.
