@@ -15,8 +15,7 @@ data = res.read()
 # data 그대로 출력하면 b로 시작되는 문자열을 받기는 하는데, 우리가 사용할 수 있는 형식은 아니다. 따라서 디코딩을 해야하는데 파이썬에선 한글을 utf-8로 받는다.
 # b'<?xml version="1.0" encoding="utf-8" ?>\r\n<rss version="2.0">\r\n<channel>\r\n<title>\xea\xb8\xb0\xec\x83\x81\xec\xb2\xad \xec\x9c\xa1\xec\x83\x81 \xec\xa4\x91\xea\xb8\xb0\xec\x98\x88\xeb\xb3\xb4</title>\r\n<link>
 
-text = data.decode('utf-8')
+text = data.decode("utf-8")
 text
 
 print(text)
-

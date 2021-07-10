@@ -38,7 +38,7 @@ print(solve2())
 
 
 def solve3(N=int(input())):
-    return (N+1)*((N+1)**(N-1)-1)/N
+    return (N + 1) * ((N + 1) ** (N - 1) - 1) / N
 
 
 print(solve3())

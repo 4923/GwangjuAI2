@@ -1,5 +1,5 @@
 # import module
-import pandas as pd 
+import pandas as pd
 import numpy as np
 
 # import customed modules
@@ -12,9 +12,9 @@ def main():
     print("--------------------------------------")
 
     # user input
-    columns = ['id', 'pw', 'nickname', 'location']    
-    
-    login_dict = {}   # dict로 받아서 df로 변환하는
+    columns = ["id", "pw", "nickname", "location"]
+
+    login_dict = {}  # dict로 받아서 df로 변환하는
     for column in columns:
         login_dict[column] = input(f"{column} : ")
     login_df = pd.DataFrame([login_dict])
@@ -25,5 +25,6 @@ def main():
     print(USER.pw)
     print(len(USER.pw))
     # print(USER)
+
 
 main()

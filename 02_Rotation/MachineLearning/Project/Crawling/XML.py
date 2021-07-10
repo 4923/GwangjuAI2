@@ -1,5 +1,5 @@
 # DOM 요소 파악하기
-from bs4 import BeautifulSoup 
+from bs4 import BeautifulSoup
 import urllib.request
 
 # Document Object Model: XML이나 HTML 요소에 접근하는 구조를 나타낸다
@@ -8,10 +8,10 @@ import urllib.request
 url = "http://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp"
 res = urllib.request.urlopen(url)
 
-soup = BeautifulSoup(res, 'html.parser')
-title = soup.find('title').string
-wf  = soup.find('wf').string
+soup = BeautifulSoup(res, "html.parser")
+title = soup.find("title").string
+wf = soup.find("wf").string
 
 print(title)
-print('-' * 20)
+print("-" * 20)
 print(wf)

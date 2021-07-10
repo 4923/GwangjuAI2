@@ -4,10 +4,10 @@
 
 import requests as req
 import json
-from pandas.io.json import json_normalize   # json을 변환시키는 라이브러리
+from pandas.io.json import json_normalize  # json을 변환시키는 라이브러리
 
 # 예전 실검 구조
-url = 'http://rank.search.naver.com/rank.js'
+url = "http://rank.search.naver.com/rank.js"
 
 # object로 구성되어있다.
 # key와 value으로 나누어져 있다.: rank, keyword
@@ -17,4 +17,4 @@ url = 'http://rank.search.naver.com/rank.js'
 # pandas로 바로 변환
 res = req.get(url)
 j = json.loads(res.text)
-json_normalize( j, ['data', 'data'])
+json_normalize(j, ["data", "data"])

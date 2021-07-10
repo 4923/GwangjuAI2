@@ -1,17 +1,18 @@
 # import module
-import pandas as pd 
-import numpy as np 
+import pandas as pd
+import numpy as np
+
 
 class Account:
     def __init__(self, *login_df):
         self.login = True
-        self.id = str(login_df[1]['id'])
-        self.pw = str(login_df[1]['pw'])
-        self.nickname = login_df[1]['nickname']
-        self.location = login_df[1]['location']
-    
-    def __repr__(self):     # 왜 출력이 안되는지 모르겠다 print(object 하면 나와야하는데)
-        if self.authority(): 
+        self.id = str(login_df[1]["id"])
+        self.pw = str(login_df[1]["pw"])
+        self.nickname = login_df[1]["nickname"]
+        self.location = login_df[1]["location"]
+
+    def __repr__(self):  # 왜 출력이 안되는지 모르겠다 print(object 하면 나와야하는데)
+        if self.authority():
             return f"""
             현재 로그인 중인 사용자는 {self.nickname}입니다.
             -----------------------------------------------
@@ -28,13 +29,15 @@ class Account:
     def authority(self):
         return self.login
 
-
-    def info(self, id):      # return : series
+    def info(self, id):  # return : series
         login_df = pd.read_csv("../../login/Commerce6_login.csv", encoding="UTF-8")
-        info = login_df.loc[login_df['id'] == id]     # 열을 돌면서 True, False를 반환 (Name : id, dtype : bool)
+        info = login_df.loc[
+            login_df["id"] == id
+        ]  # 열을 돌면서 True, False를 반환 (Name : id, dtype : bool)
         return info
 
-'''
+
+"""
 # at main.py
 # input user info -> for문으로
 id = input()
@@ -43,4 +46,4 @@ nickname = input()
 location = input()
 
 USER = Account()
-'''
+"""

@@ -7,7 +7,7 @@ class Stack:
         self.leng = 0
 
     def push(self, value):
-        self.stack.append(int(value))   # append만 value 값이 있으므로 int 처리 할 필요 O
+        self.stack.append(int(value))  # append만 value 값이 있으므로 int 처리 할 필요 O
         self.leng += 1
 
     def pop(self):
