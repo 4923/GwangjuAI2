@@ -8,6 +8,7 @@
 
     <form action="/accounts/hello_world/" method="post">    <!-- action : url주소 -->
         {% csrf_token %}
+        <input type="text" name="input_text">
         <input type="submit" class="btn btn-dark rounded-pill px-4">
     </form>
 
