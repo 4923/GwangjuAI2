@@ -6,14 +6,24 @@
 <div style="margin: 2rem; text-align: center">
     <h1>METHOD</h1>
 
-    <form action="/accounts/hello_world/" method="post">    <!-- action : url주소 -->
+    <form action="/accounts/hello_world/" method="post">
+        <!-- action : url주소 -->
         {% csrf_token %}
+        {% comment %} 너비를 퍼센트로 정리 : prefix 된 내용 확인 (https://getbootstrap.com/docs/5.0/utilities/sizing/)
+        {% endcomment %}
+        {% comment %} w-25를 추가하면 25%만 차지하도록 만들 수 있다. {% endcomment %}
+        {% comment %} m-auto로 중앙정렬 할 수 있다. {% endcomment %}
+        <div class="input-group mb-3 w-25 m-auto">
+            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+                aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+        </div>
         <input type="text" name="input_text">
         <input type="submit" class="btn btn-dark rounded-pill px-4">
     </form>
 
-    {% for hello_world in hello_world_list %} 
-        <h3>{{ hello_world.text }}</h3>
+    {% for hello_world in hello_world_list %}
+    <h3>{{ hello_world.text }}</h3>
     {% endfor %}
 
 </div>
