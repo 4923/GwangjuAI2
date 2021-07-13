@@ -1,12 +1,13 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
-from django.urls.base import reverse_lazy
-from accountapp.models import HelloWorld
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
 
-from django.urls import reverse
+# Create your views here.
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView
+
+from accountapp.models import HelloWorld
 
 
 def hello_world(request):  # register -> request
