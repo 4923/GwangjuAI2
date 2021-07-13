@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os  # seperate .env
+import os
+
+from django.urls.base import reverse_lazy  # seperate .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +30,7 @@ while True:
     line = local_env.readline()  # read contents of .env file by line
     if not line:
         break  # break condition
-    line = line.replace(
-        "\n", ""
-    )  # 보이지 않는 줄개행 문자를 지우는 작업 (readline()을 사용하게 되면 줄개행 문자도 함께 읽어들이게 됨)
+    line = line.replace("\n", "")  # 보이지 않는 줄개행 문자를 지우는 작업 (readline()을 사용하게 되면 줄개행 문자도 함께 읽어들이게 됨)
     start = line.find("=")  # key, value는 '='을 기준으로 나눈다.
     key = line[:start]
     value = line[start + 1 :]
@@ -147,3 +147,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+# redirect after login/logout
+LOGIN_REDIRECT_URL = reverse_lazy("accountapp:hello_world")
+LOGOUT_REDIRECT_URL = reverse_lazy("accountapp:login")
