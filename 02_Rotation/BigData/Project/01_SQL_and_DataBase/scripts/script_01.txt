@@ -21,7 +21,8 @@ SELECT Name, Code, Region, Population FROM Country ORDER BY Population;   -- 특�
 SELECT Name, Code, Region, Population FROM Country ORDER BY Population DESC;   -- 특정 컬럼.
 SELECT Name AS Country, Code FROM Country ORDER BY Code;            	    -- 컬럼을 불러와서 이름을 변경하여 출력할 수 있다.
 SELECT Name AS Country, Population / 1000 AS "Pop (1000s)" FROM Country;      -- 간단한 수식을 적용할 수도 있다. 
-                          
+SELECT Name AS Country, ROUND(Population / SurfaceArea,0) AS "Population Density" FROM Country ORDER BY Population/SurfaceArea;      -- 간단한 수식을 적용할 수도 있다.  
+                         
 -- SELECT + ORDER BY를 사용해서 정렬된 결과를 보여줄 수 있다. 
 SELECT Name FROM Country;                              -- 정렬되지 않음.
 SELECT Name FROM Country ORDER BY Name;     -- 오름차순 정렬 (Default). 
@@ -47,6 +48,7 @@ SELECT Name, Continent FROM Country WHERE Name LIKE '_a%';  -- 두번째 문자가 'a'
 
 -- SELECT + WHERE + IN을 사용해서 멤버쉽 필터링 결과를 보여줄 수 있다. 
 SELECT Name, Continent FROM Country WHERE Continent IN ( 'Europe', 'Asia' ); 
+SELECT Name, Continent FROM Country WHERE Continent = 'Europe' OR Continent =  'Asia' ; 
 SELECT Name, Continent, Region FROM Country WHERE Region IN ( 'Western Europe', 'Eastern Europe' ) ORDER BY Region; 
 SELECT Name, Continent, Region FROM Country WHERE Region = 'Western Europe' OR Region = 'Eastern Europe' ORDER BY Region;   -- 이전 것과 같은 의미.
 

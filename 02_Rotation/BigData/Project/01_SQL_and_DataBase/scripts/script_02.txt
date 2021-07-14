@@ -7,8 +7,8 @@
 -- CREATE TABLE로 데이터 베이스에 테이블을 추가할 수 있다 . 
 CREATE TABLE test ( a INT, b TEXT, c TEXT );        		              -- "a", "b", "c" 컬럼의 테이블 생성.
 CREATE TABLE IF NOT EXISTS test ( a INT, b TEXT, c TEXT );        	-- "a", "b", "c" 컬럼의 테이블 중복 체크 후 생성.
-SELECT name FROM sqlite_master WHERE TYPE = "table"         	-- 테이블 목록 (SQLite).
-PRAGMA table_info(test)                                                                 -- 특정 테이블에 대한 정보.
+SELECT name FROM sqlite_master WHERE type = "table";         	-- 테이블 목록 (SQLite).
+PRAGMA table_info(test);                                                                -- 특정 테이블에 대한 정보.
 
 -- INSERT INTO ~ VALUES로 행을 추가할 수 있다.
 INSERT INTO test VALUES ( 1, 'This', 'Right here!' );            -- 1행 추가.
