@@ -7,8 +7,18 @@
     <div class="todayilearned_header_button">
         <span>nav1</span>
         <span>nav2</span>
-        <span>nav3</span>
-        <span>nav4</span>
+        {% if not user.is_authenticated %}
+        <span>
+            <a href="{% url 'accountapp:login' %}">login</a>
+        </span>
+        <span>
+            <a href="{% url 'accountapp:create' %}">signup</a>
+        </span>
+        {% else %}
+        <span>
+            <a href="{% url 'accountapp:logout' %}">logout</a>
+        </span>
+        {% endif %}
     </div>
 
     <hr>
