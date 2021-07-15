@@ -12,46 +12,46 @@ import sys
 
 
 class Queue:
-    def __init__(self):
-        self.queue = []
-        self.queue_size = 0
+    def __init__(self, N):
+        self.queue = [None for _ in range(N)]
+        self.front_idx = 0
+        self.back_idx = 0
 
     def push(self, val):
-        self.queue.append(val)
-        self.queue_size += 1
+        self.back_idx += 1
+        self.queue[self.back_idx - 1] = int(val)
 
     def pop(self):
-        if self.queue_size != 0:
-            front_num, self.queue = self.queue[0], self.queue[1:]
-            self.queue_size -= 1
-            return front_num
+        if self.size() != 0:
+            self.front_idx += 1
+            return self.queue[self.front_idx - 1]
         return -1
 
     def size(self):
-        return self.queue_size
+        return self.back_idx - self.front_idx
 
     def empty(self):
-        if self.queue_size == 0:
+        if self.size() == 0:
             return 1
         return 0
 
     def front(self):
-        if self.queue_size == 0:
+        if self.size() == 0:
             return -1
-        return self.queue[0]
+        return self.queue[self.front_idx]
 
     def back(self):
-        if self.queue_size == 0:
+        if self.size() == 0:
             return -1
-        return self.queue[-1]
+        return self.queue[self.back_idx - 1]
 
 
 def main():
-    # instance
-    Q = Queue()
     # input
     print("How many commands do you have : ", end="")
     N, current = int(sys.stdin.readline().strip()), 0
+    # instance
+    Q = Queue(N)
     # orders
     while current != N:
         print("Your Command : ", end="")
