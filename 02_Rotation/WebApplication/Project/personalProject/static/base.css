@@ -15,3 +15,8 @@
     margin-top: 1rem;
     font-family: 'Orbitron', sans-serif;
 }
+
+.mv-500 {
+    max-width: 500px;
+    padding: 1rem 1.5rem;
+}
