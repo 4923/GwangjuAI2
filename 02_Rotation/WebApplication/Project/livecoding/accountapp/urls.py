@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
-from accountapp.views import AccountCreateView, hello_world
+from accountapp.views import AccountCreateView, hello_world, AccountDetailView
 
 app_name = "accountapp"
 
@@ -12,4 +12,6 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(), name="logout"),
     path("create/", AccountCreateView.as_view(), name="create"),
     # 두번째 인자로 가져와야 할 건 함수 (view) 인데 AccountCreateView는 클래스라 .as_view를 추가해야 한다. 추가하면 view로 가져올 수 있음.
+    path("create/", AccountCreateView.as_view(), name="create"),
+    path("detail/<int:pk>", AccountDetailView.as_view(), name="detail"),
 ]

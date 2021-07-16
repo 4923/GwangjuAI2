@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accountapp.models import HelloWorld
 
@@ -36,3 +36,10 @@ class AccountCreateView(CreateView):
     # reverse_lazy : reverse와 하는건 똑같다. 인자값을 가지고주소를 역추적 하는건 같은데 함수형에서 reverse해서 추적하는것과 클래스에서 추적하는게 다르기 때문. 나중에 실제 객체가 생성된 후에 필요할때만 불러야 하므로 _lazy를 붙인다.
     # 함수형에선 reverse 클래스에서는 reverse_lazy
     template_name = "accountapp/create.html"
+
+
+class AccountDetailView(DetailView):
+    # user 객체를 어떻게 뽑아낼 것인가
+    model = User
+    context_object_name = "target_user"  # 이 이름을 통해 html에서 account 객체에 접근하게 된다 (!!)
+    template_name = "accountapp/detail.html"
