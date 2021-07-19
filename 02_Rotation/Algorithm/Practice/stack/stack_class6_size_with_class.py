@@ -1,6 +1,6 @@
 class Stack:
-    def __init__(self):
-        self.stack_list = []
+    def __init__(self, n):
+        self.stack_list = [None for _ in range(n)]
         self.stack_size = 0
 
     def push(self, num):
