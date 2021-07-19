@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from accountapp.forms import AccountCreationForm
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
@@ -32,7 +33,7 @@ def hello_world(request):  # register -> request
 
 class AccountCreateView(CreateView):
     model = User
-    form_class = UserCreationForm
+    form_class = AccountCreationForm
     success_url = reverse_lazy("accountapp:hello_world")
     # 위에서처럼 reverse를 그냥 사용하면 안된다.
     # reverse_lazy : reverse와 하는건 똑같다. 인자값을 가지고주소를 역추적 하는건 같은데 함수형에서 reverse해서 추적하는것과 클래스에서 추적하는게 다르기 때문. 나중에 실제 객체가 생성된 후에 필요할때만 불러야 하므로 _lazy를 붙인다.
