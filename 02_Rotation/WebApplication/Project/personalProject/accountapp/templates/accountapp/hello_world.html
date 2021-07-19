@@ -1,26 +1,17 @@
-<!-- exclude base.html -->
-
 {% extends 'base.html' %}
 
 {% block contents %}
+
 <div style="margin: 2rem; text-align: center">
+
     <h1>METHOD</h1>
-
-    <form action="/accounts/hello_world/" method="post">
-        <!-- action : url주소 -->
+    <form action="/accountapp/hello_world/" method="post">
         {% csrf_token %}
-        {% comment %} 너비를 퍼센트로 정리 : prefix 된 내용 확인 (https://getbootstrap.com/docs/5.0/utilities/sizing/)
-        {% endcomment %}
-        {% comment %} w-25를 추가하면 25%만 차지하도록 만들 수 있다. {% endcomment %}
-        {% comment %} m-auto로 중앙정렬 할 수 있다. {% endcomment %}
-
         <input type="text" name="input_text">
         <input type="submit" class="btn btn-dark rounded-pill px-4">
-        <!-- padding : 내부 여백, px-4로 내부 여백을 지정할 수 있다. (padding의 x축 방향으로 4정도의 내부 여백을 갖겠다.)-->
     </form>
-
     {% for hello_world in hello_world_list %}
-    <h3>{{ hello_world.text }}</h3>
+    <h3>{{  hello_world.text   }}</h3>
     {% endfor %}
 
 </div>
