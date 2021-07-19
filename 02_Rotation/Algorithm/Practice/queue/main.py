@@ -7,6 +7,7 @@
 # - front : 가장 앞에 있는 값 **확인**, 비어있을 시 -1
 # - back : 가장 뒤에 있는 값 **확인**, 비어있을 시 -1
 
+# index based implement
 
 import sys
 
