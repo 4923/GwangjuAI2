@@ -4,7 +4,13 @@ documents
 
 # DATA
 *.csv
+*xlsx
+*xls
 
+# file
+*.pdf
+02_Rotation/BigData/documents
+02_Rotation/MachineLearning/documents
 # ------------------------------------------------------------------------------------------------------------
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,jupyternotebooks
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,python,jupyternotebooks
