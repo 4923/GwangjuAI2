@@ -37,7 +37,7 @@ def hello_world(request):  # register -> request
 
 class AccountCreateView(CreateView):
     model = User
-    form_class = AccountCreationForm
+    form_class = UserCreationForm
     success_url = reverse_lazy("accountapp:hello_world")
     # 위에서처럼 reverse를 그냥 사용하면 안된다.
     # reverse_lazy : reverse와 하는건 똑같다. 인자값을 가지고주소를 역추적 하는건 같은데 함수형에서 reverse해서 추적하는것과 클래스에서 추적하는게 다르기 때문. 나중에 실제 객체가 생성된 후에 필요할때만 불러야 하므로 _lazy를 붙인다.
@@ -54,13 +54,12 @@ class AccountDetailView(DetailView):
 
 class AccountUpdateView(UpdateView):
     model = User
-    form_class = UserCreationForm
+    form_class = AccountCreationForm
     context_object_name = "target_user"
     success_url = reverse_lazy("accountapp:hello_world")
     template_name = "accountapp/update.html"
 
     def get(self, request, *args, **kwargs):
-<<<<<<< HEAD
         if request.user.is_authenticated and self.get_object() == request.user:
             return super().get(request, *args, **kwargs)
         else:
@@ -71,18 +70,6 @@ class AccountUpdateView(UpdateView):
             return super().get(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
-=======
-        if request.user.is_authenticated:
-            return super().get(request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect(reverse("account:login"))
-
-    def post(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return super().get(request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect(reverse("account:login"))
->>>>>>> c4c7c6bc678e5c513b0307fac3a00cab0b7b7064
 
 
 class AccountDeleteView(DeleteView):
@@ -92,7 +79,6 @@ class AccountDeleteView(DeleteView):
     template_name = "accountapp/delete.html"
 
     def get(self, request, *args, **kwargs):
-<<<<<<< HEAD
         if request.user.is_authenticated and self.get_object() == request.user:
             return super().get(request, *args, **kwargs)
         else:
@@ -103,15 +89,3 @@ class AccountDeleteView(DeleteView):
             return super().get(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
-=======
-        if request.user.is_authenticated:
-            return super().get(request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect(reverse("account:login"))
-
-    def post(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return super().get(request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect(reverse("account:login"))
->>>>>>> c4c7c6bc678e5c513b0307fac3a00cab0b7b7064
