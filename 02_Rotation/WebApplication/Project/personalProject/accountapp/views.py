@@ -53,13 +53,21 @@ class AccountUpdateView(UpdateView):
     template_name = "accountapp/update.html"
 
     def get(self, request, *args, **kwargs):
+<<<<<<< HEAD
         if request.user.is_authenticated and self.get_object() == request.user:
+=======
+        if request.user.is_authenticated():
+>>>>>>> c4c7c6bc678e5c513b0307fac3a00cab0b7b7064
             return super().get(request, *args, **kwargs)
         else:
             return HttpResponseRedirect(reverse("accountapp:login"))
 
     def post(self, request, *args, **kwargs):
+<<<<<<< HEAD
         if request.user.is_authenticated and self.get_object() == request.user:
+=======
+        if request.user.is_authenticated():
+>>>>>>> c4c7c6bc678e5c513b0307fac3a00cab0b7b7064
             return super().get(request, *args, **kwargs)
         else:
             return HttpResponseRedirect(reverse("accountapp:login"))
@@ -72,13 +80,21 @@ class AccountDeleteView(DeleteView):
     template_name = "accountapp/delete.html"
 
     def get(self, request, *args, **kwargs):
+<<<<<<< HEAD
         if request.user.is_authenticated and self.get_object() == request.user:
+=======
+        if request.user.is_authenticated():
+>>>>>>> c4c7c6bc678e5c513b0307fac3a00cab0b7b7064
             return super().get(request, *args, **kwargs)
         else:
             return HttpResponseRedirect(reverse("accountapp:login"))
 
     def post(self, request, *args, **kwargs):
+<<<<<<< HEAD
         if request.user.is_authenticated and self.get_object() == request.user:
+=======
+        if request.user.is_authenticated():
+>>>>>>> c4c7c6bc678e5c513b0307fac3a00cab0b7b7064
             return super().get(request, *args, **kwargs)
         else:
             return HttpResponseRedirect(reverse("accountapp:login"))

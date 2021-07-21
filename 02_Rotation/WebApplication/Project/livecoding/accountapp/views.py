@@ -60,6 +60,7 @@ class AccountUpdateView(UpdateView):
     template_name = "accountapp/update.html"
 
     def get(self, request, *args, **kwargs):
+<<<<<<< HEAD
         if request.user.is_authenticated and self.get_object() == request.user:
             return super().get(request, *args, **kwargs)
         else:
@@ -70,6 +71,18 @@ class AccountUpdateView(UpdateView):
             return super().get(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
+=======
+        if request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse("account:login"))
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse("account:login"))
+>>>>>>> c4c7c6bc678e5c513b0307fac3a00cab0b7b7064
 
 
 class AccountDeleteView(DeleteView):
@@ -79,6 +92,7 @@ class AccountDeleteView(DeleteView):
     template_name = "accountapp/delete.html"
 
     def get(self, request, *args, **kwargs):
+<<<<<<< HEAD
         if request.user.is_authenticated and self.get_object() == request.user:
             return super().get(request, *args, **kwargs)
         else:
@@ -89,3 +103,15 @@ class AccountDeleteView(DeleteView):
             return super().get(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
+=======
+        if request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse("account:login"))
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse("account:login"))
+>>>>>>> c4c7c6bc678e5c513b0307fac3a00cab0b7b7064
