@@ -22,3 +22,29 @@
                 - (X) : pk = target_user.pk
 z
 4. detail page에 update로 이동하는 링크 지정 (detail.html에서 링크)
+
+5. id를 변경 제한
+    - 현재 상황에서는 변경이 가능한데, 서버 관리자 입장에서는 아이디가 변경되면 곤란해진다.
+    - 따라서 user info update form에서 id 칸을 무력화한다. (변경 불가능하게 한다.)
+    
+    
+    - update/views.py에서 어떤 form을 쓰는지 확인하면 `UserCreationForm`을 쓰는것을 확인할 수 있다. 
+    1. UserCreationForm 상속받아 커스터마이징 할 수 있다.
+        1. accountapp에 forms.py를 생성한다.
+        2. 커스터마이징 하기 위해 상속할 class를 생성한다.
+            ```python
+            from django.contrib.auth.forms import UserCreationForm
+
+
+            class AccountCreationForm(UserCreationForm):
+                def __init__(self, *args, **kwargs):
+                    super().__init__(*args, **kwargs)
+            ```
+            - UserCreationForm과 다를게 없는 상태다.
+        3. 커스터마이징
+            - `self.fields['username']` id를 입력할 수 있는 필드에 `.disabled` 라는 속성을 활성화한다.
+    2. AccountUpdateView 에서 이전처럼 그대로 UserCreationForm을 가져오지 않고 forms.py에서 생성한 UserCreationForm을 불러온다.
+        - 짙은 회색으로 변경되어 수정할 수 없게 된다.
+
+    - 수정 불가능한 것 처럼 만든거지 소스코드를 만지면 변경할 수 있다. (value를 수정하면 됨.) 하지만 disabled 속성을 추가해씩 때문에 django에서는 변경된 값을 인지하지 않게 된다.
+    - 서버를 구축할 때에는 client를 믿으면 안 된다!
