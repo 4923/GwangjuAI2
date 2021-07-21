@@ -3,7 +3,7 @@
 <p align=center>광주인공지능사관학교 / 중고급과정</p>
 <br>
 <div align=center>
-<img src="rotation.png" a="schedule_class6" width=800>
+<img src="schedule.png" a="schedule_class6" width=800>
 </div>
 <br>
 
