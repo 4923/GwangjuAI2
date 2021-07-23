@@ -16,7 +16,7 @@ form을 model에서 자동으로 변환한다.
 ---
 ## 새로운 앱을 만든다.
 1. 터미널에서 새로운 앱 생성
-    - python manage.py startapp profileapp
+    - `python manage.py startapp profileapp`
 2. mainapp/settings.py 의 INSTALLED_APPS에 profileapp 추가
 3. mainapp/urls.py 의 urlpatterns에 profileapp 추가
     - `path("profileapp/", include("profileapp.urls")),`
