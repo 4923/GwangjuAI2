@@ -19,6 +19,7 @@ url = "https://search.naver.com/search.naver"
 res = req.get(
     url, params={"query": "정보처리기사"}
 )  # requests의 params(parameters) 속성을 사용하면 웹에서 쓸 수 있는 이름으로 바꿔서 가져온다.
+print(res.text)
 # --------------------------------
 
 # 프로그램을 요청하면 안되게끔 막아둔 곳이 있음
