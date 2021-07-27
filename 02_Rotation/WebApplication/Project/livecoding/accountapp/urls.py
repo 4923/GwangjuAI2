@@ -1,5 +1,7 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from accountapp.views import (
     AccountCreateView,
@@ -22,4 +24,4 @@ urlpatterns = [
     path("detail/<int:pk>", AccountDetailView.as_view(), name="detail"),
     path("update/<int:pk>", AccountUpdateView.as_view(), name="update"),  # route 이름이 update
     path("delete/<int:pk>", AccountDeleteView.as_view(), name="delete"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
