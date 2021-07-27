@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    User = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
 
     # User
     # account와 일대일 연결되어야 하므로 파라미터로 연결하고자 하는 클래스를 넘긴다 (User, django에서 기본 제공하는 그 유저모델)
