@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from django.views.generic.edit import UpdateView
 
 from profileapp.forms import ProfileCreateForm
 from profileapp.models import Profile
@@ -23,3 +24,11 @@ class ProfileCreateView(CreateView):
 
         # db에서 이미지에 들어가는 값은 경로! 다
         # 이미지 하나 올리면 media가 생겼을 것
+
+
+class ProfileUpdateView(UpdateView):
+    model = Profile
+    context_object_name = "target_profile"
+    form_class = ProfileCreateForm
+    success_url = reverse_lazy("accountapp:hello_world")
+    template_name = "profileapp/update.html"
