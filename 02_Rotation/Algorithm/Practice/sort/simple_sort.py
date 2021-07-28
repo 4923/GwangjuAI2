@@ -48,8 +48,10 @@ for i in range(n):
 
 # 실행
 
-# insertion_sorted_list = insertion_sort()
-# print(" ".join(map(str, insertion_sorted_list)))
+insertion_sorted_list = insertion_sort(
+    num_list
+)  # 여기에 num_list를 parameter로 넘기지 않으면 전역변수로 사용하기 때문에 불편함 (상관이 없기는 함)
+print(" ".join(map(str, insertion_sorted_list)))
 
 # selection_sorted_list = selection_sort()
 # print(" ".join(map(str, selection_sorted_list)))
