@@ -20,3 +20,17 @@
     max-width: 500px;
     padding: 1rem 1.5rem;
 }
+
+
+.profile-image {
+    height: 12rem;
+    width: 12rem;
+    border-radius: 20rem;
+    /* 왜곡 없이 남는부분 잘라내는 옵션 */
+    object-fit: cover;
+}
+
+.NNS_B {
+    /* NaNumSquare_B */
+    font-family: "NaNumSquare_B", cursive;
+}

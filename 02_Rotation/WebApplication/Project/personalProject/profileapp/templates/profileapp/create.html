@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 
-{% block content %}
+{% block contents %}
 
 <!-- 왜 템플릿이 안보일까? ㅠㅠ -->
 <div class="text-center mw-500 m-auto">
@@ -11,9 +11,7 @@
         </h4>
     </div>
     <div>
-        <form action="{% url 'profileapp:create' %}" 
-            enctype="multipart/form-data" 
-            method="post">
+        <form action="{% url 'profileapp:create' %}" enctype="multipart/form-data" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
             <div class="m-5">
