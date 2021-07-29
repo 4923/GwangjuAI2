@@ -24,4 +24,4 @@ class ProfileUpdateView(UpdateView):
     model = Profile
     form_class = ProfileCreationForm
     success_url = reverse_lazy("accountapp:hello_world")
-    template_name = "profileapp/create.html"
+    template_name = "profileapp/update.html"

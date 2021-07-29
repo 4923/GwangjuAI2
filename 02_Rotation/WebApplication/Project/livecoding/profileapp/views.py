@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from profileapp.decorators import profile_ownership_required
 from django.shortcuts import render
 
 from django.urls import reverse_lazy
@@ -7,7 +9,13 @@ from django.views.generic.edit import UpdateView
 from profileapp.forms import ProfileCreateForm
 from profileapp.models import Profile
 
+from django.utils.decorators import method_decorator
+
 # Create your views here.
+# login_required 는 왜 has_ownership에서 했던 것 처럼 리스트를 만들지 않나? (accountapp/views.py)
+# login 되지 않은 유저가 profile을 가질 리가 없기 때문
+@method_decorator(login_required, "get")
+@method_decorator(login_required, "post")
 class ProfileCreateView(CreateView):
     model = Profile
     form_class = ProfileCreateForm
@@ -26,6 +34,8 @@ class ProfileCreateView(CreateView):
         # 이미지 하나 올리면 media가 생겼을 것
 
 
+@method_decorator(profile_ownership_required, "get")
+@method_decorator(profile_ownership_required, "post")
 class ProfileUpdateView(UpdateView):
     model = Profile
     context_object_name = "target_profile"
