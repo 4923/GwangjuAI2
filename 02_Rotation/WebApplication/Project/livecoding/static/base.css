@@ -34,3 +34,22 @@
     /* NaNumSquare_B */
     font-family: "NaNumSquare_B", cursive;
 }
+
+.roundbutton {
+    color: black;
+    text-decoration: none;
+}
+
+/* 버튼 디자인 */
+.round_button {
+    color: black;
+    text-decoration: none;
+    box-shadow: 0 0 3px black;
+    border-radius: 20rem;
+    padding: 0.3rem;
+}
+
+/* 마우스오버 시 변경되는 디자인 */
+.round_button:hover {
+    color: dimgrey;
+}

@@ -49,3 +49,53 @@ def get_success_url(self):
 ```
 - updateview에서는 self.object : target_user
 - pk 헷갈릴 땐 클래스 이름 잘 살펴볼 것 (Account인지 Profile인지)
+
+## design
+**edit 버튼을 icon으로 변경**
+1. material icons 검색
+    - [google fonts icons](https://fonts.google.com/icons?selected=Material+Icons:delete)
+    - [icons github](https://github.com/google/material-design-icons) -> getting started
+
+2. 복사해서 외부 source를 담는 head.html에 적는다.
+```html
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
+```
+
+3. class로 적용한다.
+```html
+<a href="{% url 'profileapp:update' pk=target_user.profile.pk %}" class="material-icons">
+edit
+</a>
+```
+
+이 때 a 태그 안의 텍스트가 icon 이름이 된다. (edit라고 적어두었으니 관련 아이콘이 적용된다.)
+
+**버튼 디자인**
+- 버튼 색 변경: color
+- 하이퍼링크 밑줄 제거: text-decoration
+- 그림자 효과 추가 : box-shadow
+    - 그림자의 위치(x,y), 크기, 색깔
+        - ex) 0 0 3px black
+- 외곽형태 변경: border-radius
+- 내부여백 (외부 : margin) : padding
+
+```css
+/* static/base.css */
+.round_button {
+    color: black;
+    text-decoration: none;
+    box-shadow: 0 0 3px black;
+    border-radius: 20rem;
+    padding: 0.3rem;
+}   
+```
+
+**마우스오버시 변경되는 색**
+클래스에 작업을 했을 때 변하는 내용이라 별도로 작업
+```css
+/* static/base.css */
+.round_button:hover{
+    color: dimgrey;
+}
+```
