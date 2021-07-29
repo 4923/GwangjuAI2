@@ -44,11 +44,13 @@ def hello_world(request):  # register -> request
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy("accountapp:hello_world")
     # 위에서처럼 reverse를 그냥 사용하면 안된다.
     # reverse_lazy : reverse와 하는건 똑같다. 인자값을 가지고주소를 역추적 하는건 같은데 함수형에서 reverse해서 추적하는것과 클래스에서 추적하는게 다르기 때문. 나중에 실제 객체가 생성된 후에 필요할때만 불러야 하므로 _lazy를 붙인다.
     # 함수형에선 reverse 클래스에서는 reverse_lazy
     template_name = "accountapp/create.html"
+
+    def get_success_url(self):
+        return reverse("accountapp:detail", kwargs={"pk": self.object.pk})  # user의 pk
 
 
 class AccountDetailView(DetailView):

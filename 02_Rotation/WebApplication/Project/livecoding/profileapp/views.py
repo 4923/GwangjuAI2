@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.urls.base import reverse
 from profileapp.decorators import profile_ownership_required
 from django.shortcuts import render
 
@@ -19,8 +20,6 @@ from django.utils.decorators import method_decorator
 class ProfileCreateView(CreateView):
     model = Profile
     form_class = ProfileCreateForm
-    # 완성되었을 때 향할 곳
-    success_url = reverse_lazy("accountapp:hello_world")
     # 프로필을 만들 때 어떤 페이지를 기준으로 렌더링 할지
     template_name = "profileapp/create.html"
 
@@ -33,6 +32,10 @@ class ProfileCreateView(CreateView):
         # db에서 이미지에 들어가는 값은 경로! 다
         # 이미지 하나 올리면 media가 생겼을 것
 
+    # 완성되었을 때 향할 곳
+    def get_success_url(self):
+        return reverse("accountapp:detail", kwargs={"pk": self.object.user.pk})     # profile의 pk
+
 
 @method_decorator(profile_ownership_required, "get")
 @method_decorator(profile_ownership_required, "post")
@@ -42,3 +45,9 @@ class ProfileUpdateView(UpdateView):
     form_class = ProfileCreateForm
     success_url = reverse_lazy("accountapp:hello_world")
     template_name = "profileapp/update.html"
+
+    # override
+    def get_success_url(self):
+        # 받는게 self뿐이기 때문에 pk를 self에서 뽑아오는데 object로 불러온다.
+        # 결과적으로 self.object.user.pk와 context_object_name = 'target_profile' 같다.
+        return reverse("accountapp:detail", kwargs={"pk": self.object.user.pk})     # profile의 pk
