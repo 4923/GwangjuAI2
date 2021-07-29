@@ -34,7 +34,7 @@ class ProfileCreateView(CreateView):
 
     # 완성되었을 때 향할 곳
     def get_success_url(self):
-        return reverse("accountapp:detail", kwargs={"pk": self.object.user.pk})     # profile의 pk
+        return reverse("accountapp:detail", kwargs={"pk": self.object.user.pk})  # profile의 pk
 
 
 @method_decorator(profile_ownership_required, "get")
@@ -43,11 +43,10 @@ class ProfileUpdateView(UpdateView):
     model = Profile
     context_object_name = "target_profile"
     form_class = ProfileCreateForm
-    success_url = reverse_lazy("accountapp:hello_world")
     template_name = "profileapp/update.html"
 
     # override
     def get_success_url(self):
         # 받는게 self뿐이기 때문에 pk를 self에서 뽑아오는데 object로 불러온다.
         # 결과적으로 self.object.user.pk와 context_object_name = 'target_profile' 같다.
-        return reverse("accountapp:detail", kwargs={"pk": self.object.user.pk})     # profile의 pk
+        return reverse("accountapp:detail", kwargs={"pk": self.object.user.pk})  # profile의 pk
