@@ -27,7 +27,7 @@
     4. profile을 생성할 때 기준이 되는 template를 설정하고
         - profileapp의 create.html을 template으로 사용할 것이다. (아직 구현 X)
     
-    5. 올바른 form인지 확인하기 위해 form_valid method를 생성한다.
+    5. 비어있는 user 속성을 검증한 후 넣기 위해 form_valid를 실행하게 된다. (올바른 form인지 확인하기 위해 form_valid method를 생성한다.)
         - ProfileCreateForm은 user를 제외한 field를 받기 때문에 user값을 직접 넘겨줄 수 없는데 이를 해결하기 위한 method다.
         - form이 가지고 있는 profile instance에 접근하여 user값을 요청을 보내는 사용자 정보를 넘겨준다. (`form.instance.user = self.request.user`)
         - 과정이 완료되었으면 상속받은 `super()` 클래스인 `CreateView`에 form_valid를 넘겨준다.
