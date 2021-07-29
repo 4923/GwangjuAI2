@@ -99,3 +99,5 @@ edit
     color: dimgrey;
 }
 ```
+
+- 같은 방식으로 Update Info, Quit를 버튼으로 바꾼다. (settings, close)
