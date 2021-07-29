@@ -1,4 +1,5 @@
 # profile forms.py 생성
+> form을 model에서 자동으로 변환한다. 
 
 ```py
 class ProfileCreateForm(ModelForm):
