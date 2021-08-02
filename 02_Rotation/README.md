@@ -23,4 +23,7 @@ Tensorflow
 ### [BigData Analysis](https://github.com/4923/GwangjuAI2/tree/master/02_Rotation/BigData)
 Statistics, SQL
 
+### [NLP](https://github.com/4923/GwangjuAI2/tree/master/02_Rotation/NLP)
+Natural Language Processing
+
 ### [Mentoring/Seminar](https://github.com/4923/GwangjuAI2/tree/master/02_Rotation/Mentoring)
