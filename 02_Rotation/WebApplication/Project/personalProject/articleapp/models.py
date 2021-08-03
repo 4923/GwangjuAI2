@@ -2,8 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-class Profile(models.Model):
-    writer = models.OneToOneField(User, related_name="article", on_delete=models.CASCADE, null=True)
+class Article(models.Model):
+    writer = models.ForeignKey(User, related_name="article", on_delete=models.CASCADE, null=True)
 
     title = models.CharField(max_length=200, null=True)
 
