@@ -2,7 +2,7 @@ from django.urls import reverse_lazy, reverse
 
 from django.views.generic import CreateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView, UpdateView
 
 from articleapp.forms import ArticleCreateForm
 from articleapp.models import Article
@@ -38,3 +38,10 @@ class ArticleUpdateView(UpdateView):
         # self.object == target_article (거의 동일)
         # Article은 user를 가지고있지 않으니 self.object.user.pk는 불가 / 대신 self.object.writer.pk는 가능
         # 식별하기 번거로우므로 self.object.pk로 지정
+
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+    context_object_name = "target_article"
+    success_url = reverse_lazy("articleapp:list")
+    template_name = "articleapp/delete.html"
