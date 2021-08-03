@@ -4,9 +4,7 @@ from django.db import models
 # Create your models here.
 class Article(models.Model):
     # 작성자 정보
-    writer = models.OneToOneField(
-        User, on_delete=models.SET_NULL, related_name="article", null=True
-    )
+    writer = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="article", null=True)
 
     # 게시글에 포함할 정보
     title = models.CharField(max_length=200, null=True)  # 사진만 올릴수도 있으므로 title null=True
