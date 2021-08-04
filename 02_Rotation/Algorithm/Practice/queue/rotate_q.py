@@ -1,3 +1,4 @@
+# [접근방식 변경 / issue #1] index 기반에서 queue활용으로 (rotate_q_deque.py)
 # https://www.acmicpc.net/problem/1021
 
 
@@ -46,3 +47,5 @@ if __name__ == "__main__":
 # 누적 cnt 8에서 10이 되어야 하는데 11이 된다.
 # 그 외 BOJ 예제는 문제 X
 # move에서 시작점을 start가 아닌 start-1로 잡기
+
+# 이렇게 풀어도 2% 넘기지 못하고 오답처리 됨
