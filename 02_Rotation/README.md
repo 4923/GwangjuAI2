@@ -11,8 +11,8 @@
 ### [Web Application](https://github.com/4923/GwangjuAI2/tree/master/02_Rotation/WebApplication)
 Web Full Stack (HTML/CSS/JS, Django, Docker, AWS)
 
-### [Algorithmn](https://github.com/4923/GwangjuAI2/tree/master/02_Rotation/Algorithmn)
-Python Data Structure, Algorithmn
+### [Algorithm](https://github.com/4923/GwangjuAI2/tree/master/02_Rotation/Algorithm)
+Python Data Structure, Algorithm
 
 ### [DeepLearning & Reinforcement Learning](https://github.com/4923/GwangjuAI2/tree/master/02_Rotation/DeepLearning)
 Tensorflow
