@@ -5,8 +5,8 @@ def move_cnt(Q, target: int, current: int):
     start, end = current, target
     if current > target:
         start, end = target, current
-    move_1 = (end - start) - Q[start:end].count(None)
-    move_2 = (len(Q) + start - end) - (Q[:start].count(None) + Q[end:].count(None))
+    move_1 = (end - start) - Q[start - 1 : end].count(None)
+    move_2 = (len(Q) + start - end) - (Q[: start - 1].count(None) + Q[end:].count(None))
 
     return move_1, move_2
 
@@ -45,3 +45,4 @@ if __name__ == "__main__":
 # None None ~ 일 때 cnt가 하나 더 추가됨
 # 누적 cnt 8에서 10이 되어야 하는데 11이 된다.
 # 그 외 BOJ 예제는 문제 X
+# move에서 시작점을 start가 아닌 start-1로 잡기
