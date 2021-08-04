@@ -18,7 +18,7 @@
 > 각 단어가 가지는 고유 index를 기준으로 단어의 의미를 표현
 
 - 분류에서 가장 간단하게 사용할 수 있는 방법이나 단어의 의미가 담겨있지 않기 때문에 **유사도를 정량적으로 구할 수 없다.** 
-- one hot vector는 직교하므로 유사도라는 개념이 없다.
+- one hot vector는 **직교하므로 (내적이 0이 된다.)** 유사도라는 개념이 없다.
 - 또한 단어의 종류가 많아질수록 0의 개수가 커져 행렬이 희소해진다.
     - 희소행렬 Sparse Matrix
         - 값이 대부분 0으로 이루어진 행렬.
@@ -49,7 +49,7 @@ NLP의 기본 가정 중 하나인 distributional hypothesis (비슷한 맥락�
     - 목적 : Dense Vector
     - 목표 : $P(next|context)$ 를 최대화 하는 방향으로 딥러닝 모델의 가중치 최적화
         - 맥락이 주어졌을 때 맥락 다음의 단어가 올 조건부 확률
-    - 예시 : GPT3, BERT, Word2Vec
+    - 예시 : GPT3, BERT, Word2Vec => 모두 언어학으로부터 영향을 받음
         - GPT3 : 코드 자동완성 서비스의 기반 모델 (Github Copilot)
             - $P(next|context=past)$
         - BERT : 미래의 맥락까지 고려한다.
