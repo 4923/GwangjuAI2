@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from articleapp.decorators import article_ownership_required
 from django.urls import reverse_lazy, reverse
 
 from django.views.generic import CreateView
@@ -7,9 +9,13 @@ from django.views.generic.edit import DeleteView, UpdateView
 from articleapp.forms import ArticleCreateForm
 from articleapp.models import Article
 
+from django.utils.decorators import method_decorator
+
 # Create your views here.
 
 
+@method_decorator(login_required, "get")
+@method_decorator(login_required, "post")
 class ArticleCreateView(CreateView):
     model = Article
     form_class = ArticleCreateForm  # model form을 기반으로 만들었다.
@@ -27,6 +33,8 @@ class ArticleDetailView(DetailView):
     template_name = "articleapp/detail.html"  # 렌더링 페이지
 
 
+@method_decorator(article_ownership_required, "get")
+@method_decorator(article_ownership_required, "post")
 class ArticleUpdateView(UpdateView):
     model = Article
     form_class = ArticleCreateForm
@@ -40,6 +48,8 @@ class ArticleUpdateView(UpdateView):
         # 식별하기 번거로우므로 self.object.pk로 지정
 
 
+@method_decorator(article_ownership_required, "get")
+@method_decorator(article_ownership_required, "post")
 class ArticleDeleteView(DeleteView):
     model = Article
     context_object_name = "target_article"
