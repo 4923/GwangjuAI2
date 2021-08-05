@@ -16,7 +16,7 @@
     - Visualization (matplotlib, seaborn)
 2. [Rotation](https://github.com/4923/GwangjuAI2/tree/master/02_Rotation/README.md)
     - Web Application
-    - Algorithmn
+    - Algorithm
     - DeepLearning & Reinforcement Learning
     - MachineLearning
     - BigData Analysis
