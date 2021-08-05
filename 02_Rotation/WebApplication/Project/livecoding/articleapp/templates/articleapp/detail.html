@@ -3,31 +3,38 @@
 {% block contents %}
 
 
-    <div class="container">
-        <div>
-            {# 게시글 정보 : 제목, 글쓴이, 작성일자 #}    
-            <h1>{{ target_article.title }}</h1>
-            {% comment %} article.writer만 하면 안된다. : user 객체이기 때문이다
-            user객체와 연결되어있는 profile 객체에 접근한 후
-            profile객체가 가지고 있는 nickname을 출력한다. {% endcomment %}
-            <h3>{{ target_article.writer.profile.nickname }}</h3>
-            <p>{{ target_article.created_at}}</p>
-        </div>
-        <div>
-            {# 게시글 대표 이미지, 게시글 내용 #}    
-            <img src="{{ target_article.image.url }}" alt="article image"/>
-            {{ target_article.content }}
-            <div>
-                <a href="{% url 'articleapp:update' pk=target_article.pk %}"
-                    class="btn btn-success rounded-pill px-5">
-                    Update
-                </a>
-                <a href="{% url 'articleapp:delete' pk=target_article.pk %}"
-                    class="btn btn-danger rounded-pill px-5">
-                    Delete
-                </a>
-            </div>
-        </div>
+<div class="container text-center">
+    <div class="my-5">
+        {# 게시글 정보 : 제목, 글쓴이, 작성일자 #}
+        <h1 class="NNS_B">{{ target_article.title }}</h1>
+        {% comment %} article.writer만 하면 안된다. : user 객체이기 때문이다
+        user객체와 연결되어있는 profile 객체에 접근한 후
+        profile객체가 가지고 있는 nickname을 출력한다. {% endcomment %}
+        <h3>{{ target_article.writer.profile.nickname }}</h3>
+        <p>{{ target_article.created_at}}</p>
     </div>
+    <hr>
+    <div class="my-5">
+        {# 게시글 대표 이미지, 게시글 내용 #}
+        <img src="{{ target_article.image.url }}" class="article_image" alt="article image" />
+        <div class="article_content my-5">
+            {{ target_article.content }}
+        </div>
+        {% if target_article.writer == user %}
+        <div>
+            <a href="{% url 'articleapp:update' pk=target_article.pk %}" class="btn btn-success rounded-pill px-5">
+                Update
+            </a>
+            <a href="{% url 'articleapp:delete' pk=target_article.pk %}" class="btn btn-danger rounded-pill px-5">
+                Delete
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    <hr>
+    <div>
+        {% comment %} 댓글 내용, 댓글 작성 공간 {% endcomment %}
+    </div>
+</div>
 
 {% endblock %}
