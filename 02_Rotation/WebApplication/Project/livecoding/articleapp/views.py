@@ -4,9 +4,11 @@ from django.urls import reverse_lazy, reverse
 
 from django.views.generic import CreateView, ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic.edit import DeleteView, FormMixin, UpdateView
+from django.views.generic.edit import FormMixin
 
 from articleapp.forms import ArticleCreateForm
+from commentapp.forms import CommentCreateForm
 from articleapp.models import Article
 
 from django.utils.decorators import method_decorator
@@ -27,8 +29,9 @@ class ArticleCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ArticleDetailView(DetailView):
+class ArticleDetailView(DetailView, FormMixin):
     model = Article
+    form_class = CommentCreateForm
     context_object_name = "target_article"  # 객체 지정
     template_name = "articleapp/detail.html"  # 렌더링 페이지
 
