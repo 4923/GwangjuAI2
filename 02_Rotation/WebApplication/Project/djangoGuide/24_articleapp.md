@@ -1,4 +1,4 @@
-# acticleapp
+# articleapp
 
 1. python manage.py startapp articleapp
 2. projectapp/urls.py 에 path 추가
@@ -119,7 +119,7 @@ magic grid[github](https://github.com/e-oj/Magic-Grid) 에서 [on JSFIDDLE](http
     # related_name : 뭐였더라
     class Profile(models.Model):
         # 작성자 정보
-        writer = models.OneToOneField(User, on_delete=models.SET_NULL, related_name='article', null=True)  
+        writer = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='article', null=True)  
 
         # 게시글에 포함할 정보
         title = models.CharField(max_length=200, null=True)     # 사진만 올릴수도 있으므로 title null=True
@@ -157,4 +157,226 @@ magic grid[github](https://github.com/e-oj/Magic-Grid) 에서 [on JSFIDDLE](http
         class Meta:
             model = Article
             fields = ['title', 'image', 'content']
+    ```
+
+    > CRUD 다 쓸 예정
+
+13. CreateView
+    1. articleapp/views.py에서 기본 logic 생성
+        ```py
+        # views.py
+        from django.urls import reverse_lazy
+        from articleapp.forms import ArticleCreateForm
+        from django.views.generic import CreateView
+        from articleapp.models import Article
+        # Create your views here.
+
+
+        class ArticleCreateView(CreateView):
+            model = Article
+            form_class = ArticleCreateForm  # model form을 기반으로 만들었다.
+            success_url = reverse_lazy("articleapp:list")
+            template_name = "articleapp/create.html"
+        ```
+
+        urls.py로 이동해서 create/로 이동할 수 있도록 변경 : URL routing
+        ```py
+        path("create/", ArticleCreateView.as_view(), name="create"),
+        ```
+
+    2. create template 생성 : create.html
+        - accountapp의 templates/accountapp/create.html의 틀 복붙
+        - 이 때 form action ~ 부분에 `enctype="multipart/form-data"`를 추가해야 이미지 첨부 가능
+
+        => 그런데 이렇게 했을 때 writer_id가 null 처리 된다. 이러면 안되는데?
+        - accountapp에서 create.html 할 때 form_valid에서 profile과 account를 1:1 매칭하는 작업을 profileapp/views.py에서 진행했었음
+        - $\therefore$ articleapp/views.py 에서 동일한 작업 진행 (overiding)
+
+        ```py
+        # ArticleCreateView안에 method 작성
+        def form_valid(self, form):
+            form.instance.writer = self.request.user
+            return super().form_valid(form)
+        ```
+
+        - 이 때 로그인 되지 않은 상태에서 게시글 작성하면 simple lazy error 발생 : 유저 객체가 없기 때문에 해당 에러가 발생한다.
+
+        - 로그인창으로 이동하게 하려면 decorator생성해서 유저 객체를 알려줘야 한다. (잠시 보류)
+
+        - IntegrityError at /articleapp/create/
+            - UNIQUE constraint failed: articleapp_article.writer_id
+            - [해결](https://cw9206.tistory.com/105)
+
+15. DetailView
+    1. 기본 logic : views.py
+        ```py
+        class ArticleDetailView(DetailView):
+            model = Article
+            context_object_name = 'target_article'      # 객체 지정
+            template_name = 'articleapp/detail.html'    # 렌더링 페이지
+        ```
+    2. urls.py에서 path 지정
+        - detail page는 **어떤 게시글을 볼 것인지에 대한 KEY를 넘겨야 한다. : PK**
+        - **뭘 대상으로 하는지 RUD는 항상 명시해야 한다.**
+        ```py
+        path('detail/', ArticleDetailView.as_view(), name="detail", pk = {{target_article}}) # detail : route의 이름
+        ```
+    
+    3. detail page 생성 : html
+
+15. UpdateView
+    1. 기본 logic
+    ```py
+    class ArticleUpdateView(UpdateView):
+        model = Article
+        form_class = ArticleCreationForm
+        context_object_name = 'target_article'
+        # success_url = reverse_lazy("articleapp:list")   # 이후 삭제
+    ```
+        - 수정한 게시글이므로 다른 method를 동적으로 overide한다.
+    ```py
+    class ArticleUpdateView(UpdateView):
+        model = Article
+        form_class = ArticleCreationForm
+        context_object_name = 'target_article'
+        template_name = "articleapp/update.html"
+        def get_success_url(self):
+            return reverse('articleapp:detail', kwargs={'pk':self.object.writer.pk})
+            # self.object == target_article (거의 동일)
+            # self.object인 Article는 user를 가지고있지 않고 writer를 가지고있으므로 writer로 지정?
+    ```
+    2. urls.py에서 routing
+    ```py
+    path('update/<int:pk>', ArticleUpdateView.as_view(), name="update")
+    ```
+    3. update page 생성 : html
+        - 이전에 사용했었던 articleapp/create.html을 재사용
+            - 제목 변경
+            - form action 경로 변경 : create가 아닌 update로 이동
+            - pk 추가
+    4. detail에 링크 추가  
+        1. 두번째 div태그 안에 하위 div 태그 생성한다
+        2. anchor 태그 생성 : articleapp에서 update로 이동하는 링크 생성 (pk 잊지 말 것)
+            - rounded-pill : 알약모양버튼
+            - px : 내부여백 (상하좌우)
+
+16. DeleteView 
+    1. 삭제 여부만 확인하면 땡이므로 form은 필요 X
+        ```py
+        class ArticleDeleteView(DeleteView):
+            model = Article
+            context_object_name = 'target_article'
+            success_url = reverse_lazy('articleapp:list')
+            template_name = 'articleapp/delete.html'
+        ```
+    2. urls.py
+        ```py
+        path('delete/<int:pk>', ArticleDeleteView.as_view(), name="delete"),
+        ```
+    
+    3. template 생성 : html
+        - update.html재사용
+
+    4. delete.html에 링크 생성
+        - update 버튼 옆 (a 태그 재사용)
+
+17. 권한 확인 : decorator
+    - create
+        - 로그인만 확인하면 된다.
+        - `@method_decorator(login_required, 'get/post')`
+            - 왜 login_required?
+                - form_valid에서 self.request를 찾아야 하는데 로그인 하지 않으면 이게 안 됨. 따라서 로그인 여부 확인
+        - 수정했을 때처럼 게시글 작성 후 작성한 게시글 확인할 수 있게 (get_success_url ...) 해야 한다.
+    - update/delete
+        - 작성자만 수정/삭제할 수 있어야 하므로 새로운 decorator 생성
+        - articleapp/decorators.py 생성 후 decorator 작성
+            ```py
+            def article_ownership_required(func):
+                def decorated(request, *args, **kwargs):    # parameter는 고정
+                    target_article = Article.objects.get(pk=kwaargs['pk'])
+                    if target_article.writer == request.user:
+                        return func(request, *args, **kwargs)
+                    else:
+                        return HttpResponseForbidden()
+                return decorated
+            ```
+        - 이제 updateview, deleteview 위에 @method_decorator(article_ownership_required, 'get/post') 를 불러준다.
+
+18. design
+    1. 중앙정렬
+    2. 제목, 본문 등에 여백 넣기
+    3. 제목 볼드처리
+    4. 내용과 제목 나누는 구분자
+        - div태그 두개를 hr로 나눈다
+        - 밑의 div에 my-5로 마진 추가한다
+    5. 사진과 내용의 층을 나눈다.
+        - target article을 위한 div를 생성한다.
+        - my-5정도로 마진 추가
+    6. 사진을 둥글게 깎고 크기 조절한다. 그림자도 넣자.
+        - img 태그를 위한 class 생성 : article_image
+        - 이제 article_image라는 class를 static/base.css에 추가.
+        ```css
+        .article_image{
+            width : 60%
+            border-radius: 2rem;
+            box-shadow: 0 0 1rem grey;
+        }
+        ```
+    7. article_content로 게시글 속성 설정
+        ```css
+        .article_content{
+            text-align: left;
+            font-size: 1.5em; /* 1rem이 기본*/
+        }
+        ```
+19. 본인이 아닐 때에는 update나 delete 보이지 않게 하기
+     - detail.html에서
+    ```html
+    {% if target_article.writer == user %}
+    <!-- 생략 -->
+    {% endif %}
+    ```
+
+20. 페이지네이션 : 페이지를 나누는 방식 => list view [docs](https://docs.djangoproject.com/en/3.2/ref/paginator/#page-class)
+    - vs 핀터레스트는 페이지가 없고 무한 스크롤 방식이다. 피드가 자동으로 채워진다.
+    => JS를 써야 한다.
+    ```py
+    # list view
+
+    ```
+    - article List : context_object_name의 내용
+        - 레이아웃 하나하나에 게시글이 들어가야 한다.
+        -
+    - page obj : 페이지네이션에 필요한 정보를 담고있는 객체. 여기가 몇 페이지인지 알려준다.
+
+    - 10개까지 나오는건 커스터마이징 필요하고 지금은 3개까지만 나온다.
+    ```html
+    <!-- list.html 의 create article button 위 -->
+
+    <!-- 지금 있는 페이지 -->
+    <div class = "text-center">
+        {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.previous_page_number }}" class="btn btn-secondary rounded-pill">
+                {{ page_obj.previous_page_number }}
+            </a>
+        {% endif %}
+        <a href="#" class="btn btn-dark rounded-pill">    
+        <!-- 현재 내가 있는 페이지 -->
+        <!-- pagenated_by인가 view에서 조정하면 한 페이지에 몇 개의 게시글 노출할지 설정할 수 있다. -->
+        {{ page_obj.number }}
+        </a>
+        <!-- 다음 페이지가 있으면 다음 페이지로 이동하는 anchor 추가 :docs 참고 -->
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary rounded-pill">
+            {{ page_obj.next_page_number }}
+        </a>
+        {% endif %}
+    </div>
+    ```
+    - secondary는 회색으로 변하고 dark는 짙은색이라 현재 페이지를 구별할 수 있다.
+
+21. 너무 기니까 include를 통해 내용을 빼낸다.
+    - snippets : 코드조각들
+    ```html
+    {% include 'snippets/pagination.html' %}
     ```
