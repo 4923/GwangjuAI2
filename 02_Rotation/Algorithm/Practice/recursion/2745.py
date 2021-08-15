@@ -9,17 +9,45 @@
 # 출력
 # 첫째 줄에 B진법 수 N을 10진법으로 출력한다.
 
-N, B = map(str, input().split())
+# N, B = map(str, input().split())
 
-result = 0
-for idx, digit in enumerate(N):
-    toDecimal = int(B) ** idx
-    if not digit.isdigit():
-        digit = ord(digit) - 55
-    print(digit, type(digit))
-    result += toDecimal * digit
+# result = 0
+# for idx, digit in enumerate(N):
+#     toDecimal = int(B) ** idx
+#     if not digit.isdigit():
+#         digit = ord(digit) - 55
+#     print(digit, type(digit))
+#     result += toDecimal * digit
 
-print(result)
+# print(result)
 
 # try 1 : isdigit, isnumeric 모두 같은 문제 발생
 # TypeError(연산, 함수가 계산할 때 데이터의 유형이 잘못되었을 때)
+
+# ------------------------ #
+
+
+def to10(N, B, index, result):
+    if index == len(N):
+        print(result)
+        return result
+
+    decimal = N[index]
+    if not decimal.isdigit():
+        decimal = ord(decimal) - 55
+    result += int(decimal) * int(B) ** index
+    to10(N, B, index + 1, result)
+
+
+def main():
+    N, B = map(str, input().split())
+    index, result = 0, 0
+    to10(N, B, index, result)
+
+
+if __name__ == "__main__":
+    main()
+
+
+# try 2 : 재귀로 풀었을 때 입력값 10 10 에서 정답 1 출력되는 문제
+# 10이라는 값이 10진법일때 이를 10진법으로 변환하면 10이 출력되어야 함.
