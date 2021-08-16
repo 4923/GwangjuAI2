@@ -11,15 +11,17 @@
 
 N, B = map(str, input().split())
 
-result = 0
-for idx, digit in enumerate(N):
+result, N = 0, list(N)
+for idx in range(len(N)):
+    digit = N.pop()  # str
     toDecimal = int(B) ** idx
     if not digit.isdigit():
         digit = ord(digit) - 55
-    print(digit, type(digit))
-    result += toDecimal * digit
+    # print(digit, type(digit))
+    result += toDecimal * int(digit)
 
 print(result)
+
 
 # try 1 : isdigit, isnumeric 모두 같은 문제 발생
 # TypeError(연산, 함수가 계산할 때 데이터의 유형이 잘못되었을 때)
