@@ -4,7 +4,7 @@ class Queue:
         self.array = [None for _ in range(n)]
         self.f_idx = 0
         self.b_idx = 0
-    
+
     def push(self, num):
         self.array[self.b_idx] = num
         self.b_idx += 1
@@ -42,10 +42,11 @@ class Queue:
         if self.is_empty():
             return -1
 
-        return self.array[self.b_idx-1]
+        return self.array[self.b_idx - 1]
+
 
 def run_cmd_with_queue(command, queue_obj):
-# def runCmdWithQueue(command, queueObj):
+    # def runCmdWithQueue(command, queueObj):
     cmd_type = command[0]
 
     if cmd_type == "push":
@@ -63,9 +64,10 @@ def run_cmd_with_queue(command, queue_obj):
 
     elif cmd_type == "front":
         print(queue_obj.front())
-    
+
     elif cmd_type == "back":
         print(queue_obj.back())
+
 
 n = int(input())
 queue_obj = Queue(n)

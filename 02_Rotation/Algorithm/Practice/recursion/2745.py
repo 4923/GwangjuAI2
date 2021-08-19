@@ -9,18 +9,18 @@
 # 출력
 # 첫째 줄에 B진법 수 N을 10진법으로 출력한다.
 
-N, B = map(str, input().split())
+# N, B = map(str, input().split())
 
-result, N = 0, list(N)
-for idx in range(len(N)):
-    digit = N.pop()  # str
-    toDecimal = int(B) ** idx
-    if not digit.isdigit():
-        digit = ord(digit) - 55
-    # print(digit, type(digit))
-    result += toDecimal * int(digit)
+# result, N = 0, list(N)
+# for idx in range(len(N)):
+#     digit = N.pop()  # str
+#     toDecimal = int(B) ** idx
+#     if not digit.isdigit():
+#         digit = ord(digit) - 55
+#     # print(digit, type(digit))
+#     result += toDecimal * int(digit)
 
-print(result)
+# print(result)
 
 
 # try 1 : isdigit, isnumeric 모두 같은 문제 발생
@@ -30,24 +30,20 @@ print(result)
 # ------------------------ #
 
 
-def to10(list_N, B, index, result):
-    if len(list_N) == 0:
-        print(result)
-        return result
+def to10(list_N, B, index):
+    if len(list_N) == 0:  # excape point
+        return 0
 
     digit = list_N.pop()
     if not digit.isdigit():
         digit = ord(digit) - 55
-    result += int(digit) * int(B) ** index
-    # print(f"(digit {digit}) * (index {index}) ** (B {B}) =  {result} ")
 
-    index += 1
-    to10(list_N, B, index, result)
+    return int(digit) * int(B) ** index + to10(list_N, B, index + 1)
 
 
 def main():
     N, B = map(str, input().split())
-    to10(list(N), B, index=0, result=0)
+    print(to10(list(N), B, index=0))
 
 
 if __name__ == "__main__":

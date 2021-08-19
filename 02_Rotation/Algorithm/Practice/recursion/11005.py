@@ -13,23 +13,23 @@
 
 
 # try 1 : for/while loop
-# N, B = map(int, input().split())
+N, B = map(int, input().split())
 
 
-# def ascii(num):  # 10 ~ 35 -> A ~ Z, return str
-#     if 10 <= num <= 35:
-#         return chr(num + 55)
-#     return str(num)
+def ascii(num):  # 10 ~ 35 -> A ~ Z, return str
+    if 10 <= num <= 35:
+        return chr(num + 55)
+    return str(num)
 
 
-# converted = []
-# while N > 0:
-#     N, mod = divmod(N, B)
-#     converted.append(ascii(mod))
+converted = []
+while N > 0:
+    N, mod = divmod(N, B)
+    converted.append(ascii(mod))
 
-# converted.reverse()
-# result = "".join(converted)
-# print(result)
+converted.reverse()
+result = "".join(converted)
+print(result)
 
 # 0 0 입력시 00 출력되게해서 한 번 틀림 (몫이 0일때를 종료 조건으로 잡고 몫이 0이면 남은 값 다 털었는데 그렇게 하면 BOJ 80%초반에서 오답)
 
