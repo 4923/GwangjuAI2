@@ -32,31 +32,47 @@ conference_info = [list(map(int, sys.stdin.readline().strip().split())) for _ in
 
 # conference_info.sort()  # 끝나는 시간을 기준으로 sort 하고 싶은데 => key=lambda 이용
 conference_info.sort(key=lambda x: x[1])
-print(conference_info)
 
 cnt = 1
-idx = -1
-start, end = conference_info[0][0], conference_info[0][1]
+current_end = conference_info[0][1]
 
-while idx < N:
-    idx += 1
-    if end <= conference_info[idx][0]:
+for conference in conference_info[1:]:  # 첫번째 회의는 가져가니까 1: 도 OK
+    start, end = conference
+    if current_end <= start:
         cnt += 1
+        # current_end 갱신하는 코드를 안넣어서 틀렸었다.
+        current_end = end
+
 
 print(cnt)
 
 
 # ---------------
+# solution
+# ---------------
 
-# 회의 개수만 고려해야한다. 시간으로 쪼개면 21억을 계산해야 하기 때문
-# 이 때 : 정렬을 이용하자
-
-# ! 정렬할 때 주의사항
+# 회의 개수만 고려해야한다. (시간으로 쪼개면 21억을 계산해야 하기 때문)
+# 이 때 : 정렬을 이용하자 : ! 정렬할 때 주의사항
 # 일반적으로 정렬하려고 하면 : 두개 이상의 값일 때 앞 값을 기준으로 정렬된다
 # 물론 첫번째 값이 동일하면 그 다음순위로 다음값을 비교한다 (e.g. [(3, 4), (2, 5), (2, 3)] => [(2, 3) (2, 5), (3, 4)])
-
 # 두번째 값으로 정렬하려면 : lambda를 쓰고 귀찮아진다.
-
+# e.g. lambda element(=임시값): equation(값) / lambda x: x[ent_time]
+# 두번째 값으로 정렬 : list에 넣을때 순서를 바꿔서 넣어도 되긴 한다.
+# e.g. start_time, end_time = map(int, input().split()) / meet_times.append(end_time, start_time)
 # 일단 중요한건 끝나는 시간이다.
 
-# 겹칠 수 있는 가능성 중에서 : 이게 뭔소리지?
+# 회의의 숫자?
+# 시간복잡도는 보통 big o로 표기한다.
+# 근데 문제 범위가 하나에국한된게 아니라 두개 이상일 때 : N은 10만 이하인데 시간은 2^31-1 (~=21)억일때
+# 내가 만든 코드가 "회의 개수만큼" 순회하는지 "시간만큼" 순회하는지 알아야 한다.
+# 시간은 21억까지이므로, 시간단위로 순회할경우 O(N^2) : ???????????
+
+# 이 문제는 nlogn 이하로 문제를 푸는게 목표다.
+
+# 일반적으로 회의를 일대 일로 보자. : 회의간의 관계를 정의하자.
+# 회의간의 관계는 시작시간, 끝시간을 기준으로 여섯개로 나뉜다. (img)
+# 이제 이 여섯가지를 끝나는시간 중심으로 정렬해보자.
+
+# 겹치지 않아야하는데 : 대상회의의 시작시간이 현재 회의시작 끝시간보다 크거나 같기만 하면 count (공존 가능)
+
+# => 이런게 규칙에 따르는게 greedy한 선택이다. 따라서 규칙을 세울 때 놓친게/놓칠지 모르는게 있는지 고민하는게 중요하다.
